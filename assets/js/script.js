@@ -1,59 +1,54 @@
-const produto = document.querySelector('.input-prod')
-const botao = document.querySelector('.add-prod')
-const listaCompleta = document.querySelector('.list-prod')
+const produto = document.querySelector('.input-prod');
+const botao = document.querySelector('.add-prod');
+const listaCompleta = document.querySelector('.list-prod');
 
-let minhaLista = []
+let minhaLista = JSON.parse(localStorage.getItem('listaDeCompras')) || [];
 
-function novoProduto(){
-  if (produto.value === ''){
-  alert('Digite o nome do produto')}
-  else{
-  
+function novoProduto() {
+  const nomeProduto = produto.value.trim(); // Limpa espaços em branco
+
+  if (nomeProduto === '') {
+    alert('Digite o nome do produto');
+    return; // Impede a adição se o campo estiver vazio
+  }
+
+  if (minhaLista.some(item => item.produtos === nomeProduto)) {
+    alert('Produto já cadastrado');
+    return; // Impede a duplicação de produtos
+  }
+
   minhaLista.push({
-    produtos: produto.value,
+    produtos: nomeProduto,
     concluida: false
-  })}
+  });
 
-  produto.value = ''
-
-  mostrarProdutos()
+  produto.value = '';
+  mostrarProdutos();
 }
 
-function mostrarProdutos(){
-  let novoitem = ''
-minhaLista.forEach((item, index) => {
-novoitem = novoitem + `
-    <li class="prod ${item.concluida && "comprado"}"> 
+function mostrarProdutos() {
+  listaCompleta.innerHTML = minhaLista.map((item, index) => `
+    <li class="prod ${item.concluida ? "comprado" : ""}"> 
       <img src="assets/images/bag-check.svg" alt="" onclick="done(${index})">
       <p>${item.produtos}</p>
       <img src="assets/images/trash.svg" alt="" onclick="del(${index})">
-    </li>`
-})
-listaCompleta.innerHTML= novoitem
-localStorage.setItem('listaDeCompras', JSON.stringify(minhaLista))
+    </li>
+  `).join('');
+
+  localStorage.setItem('listaDeCompras', JSON.stringify(minhaLista));
 }
 
-function del(index){
-  minhaLista.splice(index, 1)
-  mostrarProdutos()
+function del(index) {
+  minhaLista.splice(index, 1);
+  mostrarProdutos();
 }
 
-function done(index){ 
-  minhaLista[index].concluida = !minhaLista[index].concluida
-  mostrarProdutos()
-
+function done(index) {
+  minhaLista[index].concluida = !minhaLista[index].concluida;
+  mostrarProdutos();
 }
 
-function recarregar(){
-const saveLocalStorage = localStorage.getItem('listaDeCompras')
-if (saveLocalStorage){
-minhaLista = JSON.parse(saveLocalStorage)
-}
-mostrarProdutos()
-}
+mostrarProdutos(); // Carrega a lista ao iniciar a página
 
-recarregar()
-
-botao.addEventListener('click', novoProduto)
-
+botao.addEventListener('click', novoProduto);
 
