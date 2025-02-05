@@ -1,6 +1,7 @@
 const produto = document.querySelector('.input-prod');
 const botao = document.querySelector('.add-prod');
 const listaCompleta = document.querySelector('.list-prod');
+const apagar = document.querySelector('.apagarLista')
 
 let minhaLista = JSON.parse(localStorage.getItem('listaDeCompras')) || [];
 
@@ -50,5 +51,15 @@ function done(index) {
 
 mostrarProdutos(); // Carrega a lista ao iniciar a página
 
+function apagarTudo() {
+  localStorage.removeItem('listaDeCompras'); // Limpa o localStorage
+  minhaLista = []; // Reseta o array
+  mostrarProdutos(); // Atualiza a tela
+}
+
 botao.addEventListener('click', novoProduto);
+
+apagar.addEventListener('click', apagarTudo);
+
+
 
