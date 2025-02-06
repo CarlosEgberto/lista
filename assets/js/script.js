@@ -40,7 +40,7 @@ function novoProduto() {
 
     produtoInput.value = ''; // Limpa o campo de input.
     mostrarProdutos(); // Atualiza a exibição da lista.
-    exibirMensagem('Produto adicionado com sucesso!', 'sucesso'); // Exibe mensagem de sucesso.
+    exibirMensagem(''); // Exibe mensagem de sucesso.
 }
 
 // Função para exibir os produtos na lista.

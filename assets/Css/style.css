@@ -117,7 +117,10 @@ p{
 
 /* Estilos para o total da compra */
 .total{
-    margin-left: 29px; /* Define a margem esquerda do total */
+    background-color: #3bb69d;
+    margin-left: 19px; /* Define a margem esquerda do total */
+    padding: 5px;
+    border-radius: 20px;
 }
 
 /* Estilos para o valor do total */
@@ -161,9 +164,11 @@ p{
     }
 
     .total{
-        margin-left: auto; /* Define a margem esquerda do total */
         background-color: #3bb69d;
-        font-size: 2vh;
+        font-size: 2.5vh;
+        text-align: right;
+        border-radius: 20px;
+        padding: 5px;
     }
 
     .apagarLista{
