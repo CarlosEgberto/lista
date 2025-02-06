@@ -98,9 +98,16 @@ img{
 p{
     font-size: 18pt;
 }
+.total{
+    margin-left: 29px;
+}
+.tot{
+    background-color: white;
+    display: inline-block;
+    width: 95px;
+    border-radius: 20px;
 
-{
-    background-color:blue ;
+    text-align: center;
 }
 
 @media(min-width:770px){
