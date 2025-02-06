@@ -1,164 +1,172 @@
+/* Estilos gerais para todos os elementos */
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;    
-    font: normal 17pt monospace;
+    margin: 0; /* Remove as margens padrão dos elementos */
+    padding: 0; /* Remove o preenchimento padrão dos elementos */
+    box-sizing: border-box; /* Define o modelo de caixa como border-box */
+    outline: none;    /* Remove a borda de foco padrão dos elementos */
+    font: normal 17pt monospace; /* Define a fonte para monospace com tamanho 17pt */
 }
 
+/* Estilos para o corpo da página */
 body{
-    background-image: url(background.png);
-    height: 100vh;
+    background-image: url(background.png); /* Define a imagem de fundo */
+    height: 100vh; /* Define a altura do corpo como 100% da viewport */
     background-size: cover; /* Faz a imagem cobrir todo o background */
-    background-repeat: no-repeat; /* Impede que a imagem se repita*/
-    padding: auto 20px 10px 10px;
-    background-attachment: fixed;
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+    padding: auto 20px 10px 10px; /* Define o preenchimento do corpo */
+    background-attachment: fixed; /* Mantém a imagem de fundo fixa durante a rolagem */
 }
 
+/* Estilos para o título da página */
 h1{
-    background-color:#3bb69d;
-    font: bold 22pt monospace;
-    padding: 18px;
-    border-radius: 15px 15px 0px 0px;
-    text-align: center;
-    color:white;
+    background-color:#3bb69d; /* Define a cor de fundo do título */
+    font: bold 22pt monospace; /* Define a fonte do título como negrito monospace com tamanho 22pt */
+    padding: 18px; /* Define o preenchimento do título */
+    border-radius: 15px 15px 0px 0px; /* Define os cantos do título */
+    text-align: center; /* Centraliza o texto do título */
+    color:white; /* Define a cor do texto do título como branco */
 }
 
+/* Estilos para o contêiner principal */
 .conteiner{
-    background-color: rgb(173, 173, 173);
-    width: 40vh;
-    height: auto;
-    padding-bottom: 10px;
-    border-radius: 20px;
-    margin: 30px auto;
+    background-color: rgb(173, 173, 173); /* Define a cor de fundo do contêiner */
+    width: 40vh; /* Define a largura do contêner como 40% da altura da viewport */
+    height: auto; /* Define a altura do contêner como automática */
+    padding-bottom: 10px; /* Define o preenchimento inferior do contêiner */
+    border-radius: 20px; /* Define os cantos do contêiner */
+    margin: 30px auto; /* Define as margens do contêiner */
 }
 
+/* Estilos para o campo de input do produto */
 .input-prod{
-border: none;
-border-radius: 15px;
-width: 34vh;
-height: 40px;
-padding: 10px;
-margin: 15px 15px 15px 30px;
+border: none; /* Remove a borda do input */
+border-radius: 15px; /* Define os cantos do input */
+width: 34vh; /* Define a largura do input como 34% da altura da viewport */
+height: 40px; /* Define a altura do input */
+padding: 10px; /* Define o preenchimento do input */
+margin: 15px 15px 15px 30px; /* Define as margens do input */
 }
 
+/* Estilos para o botão de adicionar produto */
 .add-prod{
-    padding: 5px 15px;
-    height: 50px;
-    display: flex;
-    margin: auto ;
-    border-radius: 15px;
-    font-size: 17pt;
-    color: white;
-    background-color: rgb(3, 17, 43);
-    cursor: pointer;
+    padding: 5px 15px; /* Define o preenchimento do botão */
+    height: 50px; /* Define a altura do botão */
+    display: flex; /* Define o display do botão como flex */
+    margin: auto ; /* Define as margens do botão como automáticas */
+    border-radius: 15px; /* Define os cantos do botão */
+    font-size: 17pt; /* Define a fonte do botão */
+    color: white; /* Define a cor do texto do botão como branco */
+    background-color: rgb(3, 17, 43); /* Define a cor de fundo do botão */
+    cursor: pointer; /* Define o cursor do mouse como uma mãozinha */
     
 }
+/* Estilos para o botão de apagar lista */
 .apagarLista{
-    background-color:rgb(255, 0, 0) ;
-    color:white;
-    border-radius: 15px;
-    padding: 8px;
-    margin:50px 0px 5px 10px;
-    font: bold 12pt monospace;
+    background-color:rgb(255, 0, 0) ; /* Define a cor de fundo do botão */
+    color:white; /* Define a cor do texto do botão como branco */
+    border-radius: 15px; /* Define os cantos do botão */
+    padding: 8px; /* Define o preenchimento do botão */
+    margin:50px 0px 5px 10px; /* Define as margens do botão */
+    font: bold 12pt monospace; /* Define a fonte do botão como negrito monospace com tamanho 12pt */
 
 }
 
+/* Estilos para o botão de adicionar produto quando ativo */
 .add-prod:active{
-    opacity: 0.7;
-    font-weight: bolder;
+    opacity: 0.7; /* Define a opacidade do botão como 0.7 */
+    font-weight: bolder; /* Define a fonte do botão como mais negrito */
 }
+/* Estilos para a imagem */
 img{
-   height: 30px;
+   height: 30px; /* Define a altura da imagem */
 }
 
+/* Estilos para a lista de produtos */
 .list-prod{
-    list-style: none;
-    width: 95%;
-    margin: 10px;
+    list-style: none; /* Remove os marcadores de lista */
+    width: 95%; /* Define a largura da lista como 95% */
+    margin: 10px; /* Define as margens da lista */
 }
 
+/* Estilos para cada item da lista */
 .prod{
-    background-color: #f2f2f2;
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
-    height: 50px;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   padding: 0px 15px;
-   border-radius: 10px;
-   margin-bottom: 10px;
-   cursor: pointer;
+    background-color: #f2f2f2; /* Define a cor de fundo do item */
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); /* Define a sombra do item */
+    height: 50px; /* Define a altura do item */
+   display: flex; /* Define o display do item como flex */
+   align-items: center; /* Alinha os itens verticalmente */
+   justify-content: space-between; /* Distribui os itens horizontalmente */
+   padding: 0px 15px; /* Define o preenchimento do item */
+   border-radius: 10px; /* Define os cantos do item */
+   margin-bottom: 10px; /* Define a margem inferior do item */
+   cursor: pointer; /* Define o cursor como uma mãozinha */
+   transition: background-color 0.3s, text-decoration 0.3s; /* Adiciona transição */
 }
+
+/* Estilos para itens comprados */
 .comprado{
-    background-color: #f5084f;
-    text-decoration: line-through;
-}
-.devolvido{
-   background-color:#f2f2f2;
-   text-decoration: none;
+    background-color: #f5084f; /* Define a cor de fundo do item comprado */
+    text-decoration: line-through; /* Risca o texto do item comprado */
 }
 
+/* Estilos para o texto do item */
 p{
-    font-size: 18pt;
+    font-size: 18pt; /* Define o tamanho da fonte do texto do item */
+    transition: color 0.3s; /* Adiciona transição para a cor do texto */
 }
+
+/* Estilos para o total da compra */
 .total{
-    margin-left: 29px;
+    margin-left: 29px; /* Define a margem esquerda do total */
 }
+
+/* Estilos para o valor do total */
 .tot{
-    background-color: white;
-    display: inline-block;
-    width: 95px;
-    border-radius: 20px;
-
-    text-align: center;
+    background-color: white; /* Define a cor de fundo do valor do total */
+    display: inline-block; /* Define o display do valor do total como inline-block */
+    width: 95px; /* Define a largura do valor do total */
+    border-radius: 20px; /* Define os cantos do valor do total */
+    text-align: center; /* Centraliza o texto do valor do total */
 }
 
-@media(min-width:770px){
+/* Estilos para as mensagens de feedback */
+#mensagens {
+    margin-top: 10px; /* Espaço acima das mensagens */
+}
 
-    .add-prod:hover{
-        opacity: 0.9;
-        font-weight: bold;
-    }
-    .add-prod:active{
-        opacity: 0.7;
-        font-weight: bolder;
-    }
-    img{
-       height: 30px;
-       opacity: 0;
-       transition: opacity 0.7s ease-in-out;
-    }
-    
-    .list-prod{
-        list-style: none;
-        width: 95%;
-        margin: 10px;
-    }
-    
-    .prod{
-        background-color: #f2f2f2;
-        box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
-        height: 50px;
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-       padding: 0px 15px;
-       border-radius: 10px;
-       margin-bottom: 10px;
-       cursor: pointer;
-    }
-    
-    .prod:hover img{
-        opacity: 1;
-    }
-    
-    .comprado{
-        background-color: #f5084f;
-        text-decoration: line-through;
+#mensagens div {
+    padding: 10px; /* Preenchimento interno das mensagens */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 5px; /* Espaço entre as mensagens */
+}
+
+.sucesso {
+    background-color: #d4edda; /* Verde claro para mensagens de sucesso */
+    color: #155724; /* Verde escuro para mensagens de sucesso */
+}
+
+.erro {
+    background-color: #f8d7da; /* Vermelho claro para mensagens de erro */
+    color: #721c24; /* Vermelho escuro para mensagens de erro */
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 520px) {
+    .conteiner {
+        width: 90vw; /* Largura do contêiner ajustada para telas menores */
     }
 
-    p{
-        font: 18pt;
+    .input-prod {
+        width: 80vw; /* Largura do input ajustada para telas menores */
+    }
+
+    .total{
+        margin-left: auto; /* Define a margem esquerda do total */
+        background-color: #3bb69d;
+        font-size: 2vh;
+    }
+
+    .apagarLista{
+        width: 10vh;
     }
 }
