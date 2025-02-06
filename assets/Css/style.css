@@ -1,10 +1,27 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto-Regular.woff2') format('woff2'),
+         url('fonts/Roboto-Regular.woff') format('woff'),
+         url('fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto-Bold.woff2') format('woff2'),
+         url('fonts/Roboto-Bold.woff') format('woff'),
+         url('fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
 /* Estilos gerais para todos os elementos */
 *{
     margin: 0; /* Remove as margens padrão dos elementos */
     padding: 0; /* Remove o preenchimento padrão dos elementos */
     box-sizing: border-box; /* Define o modelo de caixa como border-box */
     outline: none;    /* Remove a borda de foco padrão dos elementos */
-    font: normal 17pt monospace; /* Define a fonte para monospace com tamanho 17pt */
+    font: normal 17pt 'Roboto'; /* Define a fonte para Roboto com tamanho 17pt */
 }
 
 /* Estilos para o corpo da página */
@@ -20,7 +37,7 @@ body{
 /* Estilos para o título da página */
 h1{
     background-color:#3bb69d; /* Define a cor de fundo do título */
-    font: bold 22pt monospace; /* Define a fonte do título como negrito monospace com tamanho 22pt */
+    font: bold 22pt 'Roboto'; /* Define a fonte do título como negrito Roboto com tamanho 22pt */
     padding: 18px; /* Define o preenchimento do título */
     border-radius: 15px 15px 0px 0px; /* Define os cantos do título */
     text-align: center; /* Centraliza o texto do título */
@@ -67,7 +84,7 @@ margin: 15px 15px 15px 30px; /* Define as margens do input */
     border-radius: 15px; /* Define os cantos do botão */
     padding: 8px; /* Define o preenchimento do botão */
     margin:50px 0px 5px 10px; /* Define as margens do botão */
-    font: bold 12pt monospace; /* Define a fonte do botão como negrito monospace com tamanho 12pt */
+    font: bold 12pt 'Roboto'; /* Define a fonte do botão como negrito Roboto com tamanho 12pt */
 
 }
 
