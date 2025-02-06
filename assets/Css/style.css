@@ -27,10 +27,10 @@
 /* Estilos para o corpo da página */
 body{
     background-image: url(background.png); /* Define a imagem de fundo */
-    height: 100vh; /* Define a altura do corpo como 100% da viewport */
+    height: 110vh; /* Define a altura do corpo como 100% da viewport */
     background-size: cover; /* Faz a imagem cobrir todo o background */
     background-repeat: no-repeat; /* Impede que a imagem se repita */
-    padding: auto 20px 10px 10px; /* Define o preenchimento do corpo */
+    padding: auto 20px auto 10px; /* Define o preenchimento do corpo */
     background-attachment: fixed; /* Mantém a imagem de fundo fixa durante a rolagem */
 }
 
@@ -47,7 +47,7 @@ h1{
 /* Estilos para o contêiner principal */
 .conteiner{
     background-color: rgb(173, 173, 173); /* Define a cor de fundo do contêiner */
-    width: 40vh; /* Define a largura do contêner como 40% da altura da viewport */
+    width: 50vh; /* Define a largura do contêner como 40% da altura da viewport */
     height: auto; /* Define a altura do contêner como automática */
     padding-bottom: 10px; /* Define o preenchimento inferior do contêiner */
     border-radius: 20px; /* Define os cantos do contêiner */
@@ -58,7 +58,7 @@ h1{
 .input-prod{
 border: none; /* Remove a borda do input */
 border-radius: 15px; /* Define os cantos do input */
-width: 34vh; /* Define a largura do input como 34% da altura da viewport */
+width: 40vh; /* Define a largura do input como 34% da altura da viewport */
 height: 40px; /* Define a altura do input */
 padding: 10px; /* Define o preenchimento do input */
 margin: 15px 15px 15px 30px; /* Define as margens do input */
@@ -66,8 +66,8 @@ margin: 15px 15px 15px 30px; /* Define as margens do input */
 
 /* Estilos para o botão de adicionar produto */
 .add-prod{
-    padding: 5px 15px; /* Define o preenchimento do botão */
-    height: 50px; /* Define a altura do botão */
+    padding: 5px 20px; /* Define o preenchimento do botão */
+    height: 40px; /* Define a altura do botão */
     display: flex; /* Define o display do botão como flex */
     margin: auto ; /* Define as margens do botão como automáticas */
     border-radius: 15px; /* Define os cantos do botão */
@@ -81,6 +81,7 @@ margin: 15px 15px 15px 30px; /* Define as margens do input */
 .apagarLista{
     background-color:rgb(255, 0, 0) ; /* Define a cor de fundo do botão */
     color:white; /* Define a cor do texto do botão como branco */
+    width: 15vh;
     border-radius: 15px; /* Define os cantos do botão */
     padding: 8px; /* Define o preenchimento do botão */
     margin:50px 0px 5px 10px; /* Define as margens do botão */
@@ -114,7 +115,7 @@ img{
    align-items: center; /* Alinha os itens verticalmente */
    justify-content: space-between; /* Distribui os itens horizontalmente */
    padding: 0px 15px; /* Define o preenchimento do item */
-   border-radius: 10px; /* Define os cantos do item */
+   border-radius: 15px; /* Define os cantos do item */
    margin-bottom: 10px; /* Define a margem inferior do item */
    cursor: pointer; /* Define o cursor como uma mãozinha */
    transition: background-color 0.3s, text-decoration 0.3s; /* Adiciona transição */
@@ -135,9 +136,9 @@ p{
 /* Estilos para o total da compra */
 .total{
     background-color: #3bb69d;
-    margin-left: 19px; /* Define a margem esquerda do total */
+    margin-left: 15px; /* Define a margem esquerda do total */
     padding: 5px;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 /* Estilos para o valor do total */
