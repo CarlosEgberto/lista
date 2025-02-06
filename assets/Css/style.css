@@ -192,4 +192,12 @@ p{
     .apagarLista{
         width: 10vh;
     }
+    body{
+    background-image: url(background.png); /* Define a imagem       de fundo */
+    height: 110vh; /* Define a altura do corpo como 100% da viewport */
+    background-size: cover; /* Faz a imagem cobrir todo o background */
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+    padding: auto 10px; /* Define o preenchimento do corpo */
+    background-attachment: fixed; /* Mantém a imagem de fundo fixa durante a rolagem */
+}
 }
