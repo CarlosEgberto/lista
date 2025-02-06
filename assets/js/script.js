@@ -62,7 +62,11 @@ function solicitarPreco(index) {
 
   minhaLista[index].preco = preco;
   localStorage.setItem('listaDeCompras', JSON.stringify(minhaLista));
+  if (preco != 0){
+      done(index);
+    }
   atualizarTotal();
+  mostrarProdutos();
 }
 
 function atualizarTotal() {
