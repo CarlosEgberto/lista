@@ -22,6 +22,18 @@
     box-sizing: border-box; /* Define o modelo de caixa como border-box */
     outline: none;    /* Remove a borda de foco padrão dos elementos */
     font: normal 17pt 'Roboto'; /* Define a fonte para Roboto com tamanho 17pt */
+    
+}
+
+:root{
+    --cor1: #4D5057;
+    --cor2: #4E6E5D;
+    --cor3: #4DA167;
+    --cor4: #f4f0fa;
+    --cor5: #ff0000;
+    --cor6: #ff7c7c;
+    --cor7: #CFCFCF;
+    --cor8: #fff;
 }
 
 /* Estilos para o corpo da página */
@@ -36,17 +48,17 @@ body{
 
 /* Estilos para o título da página */
 h1{
-    background-color:#3bb69d; /* Define a cor de fundo do título */
-    font: bold 22pt 'Roboto'; /* Define a fonte do título como negrito Roboto com tamanho 22pt */
+    background-color:var(--cor2); /*Define a cor de fundo do título*/
+    font: normal 22pt 'Roboto'; /* Define a fonte do título como negrito Roboto com tamanho 22pt */
     padding: 18px; /* Define o preenchimento do título */
     border-radius: 15px 15px 0px 0px; /* Define os cantos do título */
     text-align: center; /* Centraliza o texto do título */
-    color:white; /* Define a cor do texto do título como branco */
+    color:var(--cor8); /* Define a cor do texto do título como branco */
 }
 
 /* Estilos para o contêiner principal */
 .conteiner{
-    background-color: rgb(173, 173, 173); /* Define a cor de fundo do contêiner */
+    background-color: var(--cor7) ; /* Define a cor de fundo do contêiner */
     width: 50vh; /* Define a largura do contêner como 40% da altura da viewport */
     height: auto; /* Define a altura do contêner como automática */
     padding-bottom: 10px; /* Define o preenchimento inferior do contêiner */
@@ -61,7 +73,11 @@ border-radius: 15px; /* Define os cantos do input */
 width: 40vh; /* Define a largura do input como 34% da altura da viewport */
 height: 40px; /* Define a altura do input */
 padding: 10px; /* Define o preenchimento do input */
-margin: 15px 15px 15px 30px; /* Define as margens do input */
+padding: 5px;
+display: flex;
+align-items: center;
+text-align: center;
+margin: 15px auto; /* Define as margens do input */
 }
 
 /* Estilos para o botão de adicionar produto */
@@ -72,19 +88,18 @@ margin: 15px 15px 15px 30px; /* Define as margens do input */
     margin: auto ; /* Define as margens do botão como automáticas */
     border-radius: 15px; /* Define os cantos do botão */
     font-size: 17pt; /* Define a fonte do botão */
-    color: white; /* Define a cor do texto do botão como branco */
-    background-color: rgb(3, 17, 43); /* Define a cor de fundo do botão */
+    color:var(--cor8); /* Define a cor do texto do botão como branco */
+    background-color:var(--cor1); /* Define a cor de fundo do botão */
     cursor: pointer; /* Define o cursor do mouse como uma mãozinha */
     
 }
 /* Estilos para o botão de apagar lista */
 .apagarLista{
-    background-color:rgb(255, 0, 0) ; /* Define a cor de fundo do botão */
-    color:white; /* Define a cor do texto do botão como branco */
+    background-color:var(--cor5) ; /* Define a cor de fundo do botão */
+    color:var(--cor8); /* Define a cor do texto do botão como branco */
     width: 15vh;
     border-radius: 15px; /* Define os cantos do botão */
     padding: 8px; /* Define o preenchimento do botão */
-    margin:50px 0px 5px 10px; /* Define as margens do botão */
     font: bold 12pt 'Roboto'; /* Define a fonte do botão como negrito Roboto com tamanho 12pt */
 
 }
@@ -103,12 +118,12 @@ img{
 .list-prod{
     list-style: none; /* Remove os marcadores de lista */
     width: 95%; /* Define a largura da lista como 95% */
-    margin: 10px; /* Define as margens da lista */
+    margin: 15px 10px; /* Define as margens da lista */
 }
 
 /* Estilos para cada item da lista */
 .prod{
-    background-color: #f2f2f2; /* Define a cor de fundo do item */
+    background-color: var(--cor4); /* Define a cor de fundo do item */
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); /* Define a sombra do item */
     height: 50px; /* Define a altura do item */
    display: flex; /* Define o display do item como flex */
@@ -123,7 +138,7 @@ img{
 
 /* Estilos para itens comprados */
 .comprado{
-    background-color: #f5084f; /* Define a cor de fundo do item comprado */
+    background-color: var(--cor6); /* Define a cor de fundo do item comprado */
     text-decoration: line-through; /* Risca o texto do item comprado */
 }
 
@@ -133,26 +148,38 @@ p{
     transition: color 0.3s; /* Adiciona transição para a cor do texto */
 }
 
+/* Estilos para as mensagens de feedback */
+#mensagens {
+    margin-top: 20px; /* Espaço acima das mensagens */
+    padding: 30px 20px;
+}
+
+.foot-conteiner{
+    justify-content: space-between; /* Distribui os itens horizontalmente */
+    height: 50px; /* Define a altura do item */
+    display: flex; /* Define o display do item como flex */
+    align-items: center; /* Alinha os itens verticalmente */
+    padding: 10px;
+    margin-top: 0px;
+}
+
 /* Estilos para o total da compra */
 .total{
-    background-color: #3bb69d;
-    margin-left: 15px; /* Define a margem esquerda do total */
+    background-color: var(--cor1);
+    color: var(--cor8);
     padding: 5px;
     border-radius: 15px;
 }
 
 /* Estilos para o valor do total */
 .tot{
-    background-color: white; /* Define a cor de fundo do valor do total */
+    background-color: var(--cor8); /* Define a cor de fundo do valor do total */
     display: inline-block; /* Define o display do valor do total como inline-block */
     width: 95px; /* Define a largura do valor do total */
     border-radius: 20px; /* Define os cantos do valor do total */
     text-align: center; /* Centraliza o texto do valor do total */
-}
-
-/* Estilos para as mensagens de feedback */
-#mensagens {
-    margin-top: 10px; /* Espaço acima das mensagens */
+    color: var(--cor1);/*da cor ao texto*/
+    margin-left: 10px;/*da espaço entre o valor e o texto*/
 }
 
 #mensagens div {
@@ -169,6 +196,39 @@ p{
 .erro {
     background-color: #f8d7da; /* Vermelho claro para mensagens de erro */
     color: #721c24; /* Vermelho escuro para mensagens de erro */
+}/* Estilos para o formulário de login */
+.login-container {
+    background-color:var(--cor2);
+    width: 50vh;
+    font: bold 17pt 'Roboto';
+    height: auto;
+    padding: 10px 0px 0px 0px;
+    border-radius: 20px 20px 0px 0px;
+    margin: 100px auto -38px auto;
+    color: var(--cor8);
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(3, 17, 43);
+    color: var(--cor8);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Estilos para dispositivos móveis */

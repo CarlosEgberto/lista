@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Compras</title>
-    <link rel="shortcut icon" href="assets/images/fiveicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/Css/style.css">
 </head>
 <body>
-    <div class="conteiner">
+    <div class="login-container">
+        <h2><p>Olá, <span id="nome-usuario"></span>!</p></h2>
+        <form id="login-form">
+            <input type="text" id="nome" placeholder="Digite seu nome" required>
+            <input type="text" id="apelido" placeholder="Digite seu apelido" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <div class="conteiner" id="conteudo-principal" style="display: none;">
         <h1>Lista de Compras</h1>
         <input class="input-prod" type="text" placeholder="Digite o nome produto">
         <button class="add-prod">Adicionar</button>
-        <div id="mensagens"></div>
         <ul class="list-prod">
-            
+
         </ul>
-        <div>
+        <div id="mensagens"></div>
+        <div class="foot-conteiner">
             <button class="apagarLista">Apagar Lista</button>
-            <span class="total">Total:R$ <span class="tot">00</span></span>
+            <span class="total">Total:R$<span class="tot">00</span></span>
         </div>
     </div>
 </body>
