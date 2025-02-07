@@ -270,9 +270,9 @@ p{
     z-index: 1;
     font: bold 17pt 'Roboto';
     height: auto;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px 0px 0px;
     border-radius: 20px;
-    margin: 20px auto -38px auto;
+    margin: 20px auto -39px auto;
     color: var(--cor8);
     }
 
