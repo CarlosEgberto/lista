@@ -147,6 +147,7 @@ if (window.innerWidth > 768) {
 const formularioLogin = document.getElementById('login-form');
 const nomeUsuario = document.getElementById('nome-usuario');
 const conteudoPrincipal = document.getElementById('conteudo-principal');
+const botaoSair = document.querySelector('.sair')
 
 formularioLogin.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -160,6 +161,7 @@ formularioLogin.addEventListener('submit', function(event) {
     nomeUsuario.textContent = apelido;
     conteudoPrincipal.style.display = 'block';
     formularioLogin.style.display = 'none';
+    botaoSair.style.display = 'block';
 });
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -170,5 +172,21 @@ window.addEventListener('DOMContentLoaded', function() {
         nomeUsuario.textContent = apelido;
         conteudoPrincipal.style.display = 'block';
         formularioLogin.style.display = 'none';
+        botaoSair.style.display='block'
+
     }
 });
+
+function sair() {
+    localStorage.removeItem('nome');
+    localStorage.removeItem('apelido');
+
+    // Esconde o conteúdo principal e exibe o formulário de login
+    conteudoPrincipal.style.display = 'none';
+    formularioLogin.style.display = 'block';
+    botaoSair.style.display = 'none';
+
+    // Limpa o nome do usuário exibido
+    nomeUsuario.textContent = '';
+
+}
