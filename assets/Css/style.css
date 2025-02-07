@@ -238,7 +238,7 @@ p{
 }
 
 /* Estilos para dispositivos móveis */
-@media (max-width: 520px) {
+@media (max-width: 500px) {
     .conteiner {
         width: 90vw; /* Largura do contêiner ajustada para telas menores */
     }
@@ -248,7 +248,7 @@ p{
         position: relative;
         z-index: 0;
         font: normal 22pt 'Roboto'; /* Define a fonte do título como negrito Roboto com tamanho 22pt */
-        width: 41.6vh;
+        width: 100%;
         padding: 10px; /* Define o preenchimento do título */
         border-radius:  0px; /* Define os cantos do título */
         text-align: center; /* Centraliza o texto do título */
@@ -257,7 +257,7 @@ p{
 
     .login-container {
         background-color:var(--cor2);
-        width: 41.6vh;
+        width: 90%;
         position: relative;
         z-index: 1;
         font: bold 17pt 'Roboto';
