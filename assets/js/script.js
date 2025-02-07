@@ -152,7 +152,7 @@ formularioLogin.addEventListener('submit', function(event) {
     event.preventDefault();
 
     const nome = document.getElementById('nome').value;
-    const apelido = document.getElementById('apelido').value;
+    const apelido = document.getElementById('apelido').value.toUpperCase(0);
 
     localStorage.setItem('nome', nome);
     localStorage.setItem('apelido', apelido);
