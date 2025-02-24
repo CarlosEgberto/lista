@@ -1,9 +1,9 @@
 // Seleciona os elementos HTML e os armazena em variáveis para facilitar o acesso.
-const produtoInput = document.querySelector('.input-prod');
-const botaoAdicionar = document.querySelector('.add-prod');
 const listaCompleta = document.querySelector('.list-prod');
 const botaoApagarTudo = document.querySelector('.apagarLista');
 const totalCompraElemento = document.querySelector('.tot');
+const nomeUsuario = document.querySelector('#nome-usuario');
+const conteudoPrincipal = document.querySelector('#conteudo-principal');
 
 // Recupera a lista de compras do localStorage ou inicializa um array vazio.
 let minhaLista = JSON.parse(localStorage.getItem('listaDeCompras')) || [];
@@ -14,38 +14,13 @@ function exibirMensagem(mensagem, tipo) {
     divMensagens.innerHTML = `<div class="${tipo}">${mensagem}</div>`;
 }
 
-// Função para adicionar um novo produto à lista.
-function novoProduto() {
-    const nomeProduto = produtoInput.value.trim();
-
-    if (nomeProduto === '') {
-        exibirMensagem('Digite o nome do produto', 'erro');
-        return;
-    }
-
-    if (minhaLista.some(item => item.produtos === nomeProduto)) {
-        exibirMensagem('Produto já cadastrado', 'erro');
-        return;
-    }
-
-    minhaLista.push({
-        produtos: nomeProduto,
-        concluida: false,
-        preco: 0
-    });
-
-    produtoInput.value = '';
-    mostrarProdutos();
-    exibirMensagem('');
-}
-
 // Função para exibir os produtos na lista.
 function mostrarProdutos() {
     listaCompleta.innerHTML = minhaLista.map((item, index) => `
         <li class="prod ${item.concluida ? "comprado" : ""}" data-index="${index}"> 
-            <img src="assets/images/bag-check.svg" alt="" onclick="done(${index})">
+            <img src="assets/images/bag-check.svg" alt="Marcar como comprado" onclick="done(${index})">
             <p class="itemNome" onclick="solicitarPreco(${index})">${item.produtos}</p>
-            <img src="assets/images/trash.svg" alt="" onclick="del(${index})">
+            <img src="assets/images/trash.svg" alt="Remover item" onclick="del(${index})">
         </li>
     `).join('');
 
@@ -127,66 +102,71 @@ function apagarTudo() {
     exibirMensagem('Lista apagada com sucesso!', 'sucesso');
 }
 
-// Adiciona os eventos de clique aos botões.
-botaoAdicionar.addEventListener('click', novoProduto);
-botaoApagarTudo.addEventListener('click', apagarTudo);
-
-mostrarProdutos();
-
-// Verifica se o dispositivo é móvel antes de adicionar o ouvinte de evento para a tecla Enter.
-if (window.innerWidth > 768) {
-    produtoInput.addEventListener('keyup', function(event) {
-        if (event.keyCode === 13) {
-            novoProduto();
-            produtoInput.focus();
-        }
-    });
-}
-
-// Código para o login simplificado
-const formularioLogin = document.getElementById('login-form');
-const nomeUsuario = document.getElementById('nome-usuario');
-const conteudoPrincipal = document.getElementById('conteudo-principal');
-const botaoSair = document.querySelector('.sair')
-
-formularioLogin.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const nome = document.getElementById('nome').value;
-    const apelido = document.getElementById('apelido').value.toUpperCase(0);
-
-    localStorage.setItem('nome', nome);
-    localStorage.setItem('apelido', apelido);
-
-    nomeUsuario.textContent = apelido;
-    conteudoPrincipal.style.display = 'block';
-    formularioLogin.style.display = 'none';
-    botaoSair.style.display = 'block';
-});
-
-window.addEventListener('DOMContentLoaded', function() {
+// Função para verificar o login e redirecionar se necessário
+function checkLogin() {
     const nome = localStorage.getItem('nome');
     const apelido = localStorage.getItem('apelido');
 
-    if (nome && apelido) {
-        nomeUsuario.textContent = apelido;
-        conteudoPrincipal.style.display = 'block';
-        formularioLogin.style.display = 'none';
-        botaoSair.style.display='block'
-
+    if (!nome || !apelido) {
+        window.location.href = 'login.html'; // Redireciona para login se não estiver logado
+    } else {
+        nomeUsuario.textContent = apelido; // Exibe o apelido do usuário
+        conteudoPrincipal.style.display = 'block'; // Mostra a página principal
     }
-});
+}
 
+// Função de login (para login.html)
+function handleLogin() {
+    const formularioLogin = document.getElementById('login-form');
+    if (formularioLogin) {
+        formularioLogin.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const apelido = document.getElementById('apelido').value;
+
+            if (nome && apelido) {
+                localStorage.setItem('nome', nome);
+                localStorage.setItem('apelido', apelido);
+                window.location.href = 'index.html'; // Redireciona para a página principal após login
+            } else {
+                exibirMensagem('Preencha todos os campos!', 'erro');
+            }
+        });
+    }
+}
+
+// Função para sair
 function sair() {
     localStorage.removeItem('nome');
     localStorage.removeItem('apelido');
-
-    // Esconde o conteúdo principal e exibe o formulário de login
-    conteudoPrincipal.style.display = 'none';
-    formularioLogin.style.display = 'block';
-    botaoSair.style.display = 'none';
-
-    // Limpa o nome do usuário exibido
-    nomeUsuario.textContent = '';
-
+    window.location.href = 'login.html'; // Redireciona para a página de login após sair
 }
+
+// Carrega os itens selecionados e verifica o login ao carregar a página
+window.addEventListener('DOMContentLoaded', function() {
+    const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+    if (selectedItems.length > 0) {
+        selectedItems.forEach(item => {
+            if (!minhaLista.some(existing => existing.produtos === item)) {
+                minhaLista.push({
+                    produtos: item,
+                    concluida: false,
+                    preco: 0
+                });
+            }
+        });
+        localStorage.removeItem('selectedItems');
+        mostrarProdutos();
+    }
+
+    // Verifica se está na página de login ou principal
+    if (window.location.pathname.includes('login.html')) {
+        handleLogin();
+    } else {
+        checkLogin();
+    }
+});
+
+// Adiciona os eventos de clique aos botões.
+botaoApagarTudo.addEventListener('click', apagarTudo);

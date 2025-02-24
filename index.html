@@ -7,29 +7,22 @@
     <link rel="stylesheet" href="assets/Css/style.css">
 </head>
 <body>
-    <div class="login-container">
-        <h2><p>Bem vindo <span id="nome-usuario"></span> !</p></h2>
-        <form id="login-form">
-            <input type="text" id="nome" placeholder="Digite seu nome" required>
-            <input type="text" id="apelido" placeholder="Digite seu apelido" required>
-            <button type="submit">Entrar</button>
-        </form>
-    </div>
-
-    <div class="conteiner" id="conteudo-principal" style="display: none;">
+    <div class="conteiner" id="conteudo-principal">
         <h1>Lista de Compras</h1>
-        <input class="input-prod" type="text" placeholder="Digite o nome produto">
-        <button class="add-prod">Adicionar</button>
-        <ul class="list-prod">
-
-        </ul>
-        <div id="mensagens"></div>
+        <div class="user-info">
+            <p>Bem-vindo, <span id="nome-usuario"></span>!</p>
+            <button class="sair" onclick="sair()">Sair</button>
+        </div>
+        <ul class="list-prod"></ul>
+        <a href="selection.html" class="select-items-btn">Selecionar Itens</a>
         <div class="foot-conteiner">
             <button class="apagarLista">Apagar Lista</button>
-            <span class="total">Total:R$<span class="tot">00</span></span>
+            <span class="total">Total: R$ <span class="tot">0.00</span></span>
         </div>
+        
+        <div id="mensagens"></div>
     </div>
-    <button class="sair" style="display:none;" onclick="sair()">sair</button>
+
+    <script src="assets/js/script.js"></script>
 </body>
-<script src="assets/js/script.js"></script>
 </html>

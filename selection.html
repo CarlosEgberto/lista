@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Itens</title>
+    <link rel="stylesheet" href="assets/Css/style.css">
+</head>
+<body>
+    <div class="conteiner">
+        <h1>Selecione os Itens para a Lista de Compras</h1>
+        <div id="categories-container"></div>
+    </div>
+    <button class="add-prod fixed-add-btn" onclick="submitSelection()">Adicionar à Lista</button>
+
+    <script src="assets/js/data.js"></script>
+    <script>
+        // Função para gerar o HTML das categorias e itens
+        function generateCategories() {
+            const container = document.getElementById('categories-container');
+            shoppingListData.forEach(category => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.textContent = category.category;
+                categoryDiv.appendChild(categoryTitle);
+
+                category.items.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'item';
+                    itemDiv.innerHTML = `<input type="checkbox" name="${category.category.toLowerCase().replace(' ', '_')}" value="${item}"> ${item}`;
+                    categoryDiv.appendChild(itemDiv);
+                });
+
+                container.appendChild(categoryDiv);
+            });
+        }
+
+        // Chama a função ao carregar a página
+        window.addEventListener('load', generateCategories);
+
+        // Função para enviar os itens selecionados
+        function submitSelection() {
+            const selectedItems = [];
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            checkboxes.forEach(checkbox => {
+                selectedItems.push(checkbox.value);
+            });
+
+            localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

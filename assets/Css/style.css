@@ -1,299 +1,333 @@
 /* Estilos gerais para todos os elementos */
-*{
-    margin: 0; /* Remove as margens padrão dos elementos */
-    padding: 0; /* Remove o preenchimento padrão dos elementos */
-    box-sizing: border-box; /* Define o modelo de caixa como border-box */
-    outline: none;    /* Remove a borda de foco padrão dos elementos */
-    font: normal 17pt arial; /* Define a fonte para arial com tamanho 17pt */
-    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Arial', sans-serif; /* Substituído por uma fonte mais moderna e universal */
 }
 
-:root{
-    --cor1: #4D5057;
-    --cor2: #4E6E5D;
-    --cor3: #4DA167;
-    --cor4: #f4f0fa;
-    --cor5: #ff0000;
-    --cor6: #ff7c7c;
-    --cor7: #CFCFCF;
-    --cor8: #fff;
+/* Variáveis de cores (mantidas do original) */
+:root {
+    --cor1: #4D5057; /* Cinza escuro */
+    --cor2: #4E6E5D; /* Verde escuro */
+    --cor3: #4DA167; /* Verde claro */
+    --cor4: #f4f0fa; /* Rosa pastel claro */
+    --cor5: #ff0000; /* Vermelho */
+    --cor6: #ff7c7c; /* Rosa avermelhado */
+    --cor7: #CFCFCF; /* Cinza claro */
+    --cor8: #fff; /* Branco */
 }
 
 /* Estilos para o corpo da página */
-body{
-    background-image: url(background.png); /* Define a imagem de fundo */
-    height: 110vh; /* Define a altura do corpo como 100% da viewport */
-    background-size: cover; /* Faz a imagem cobrir todo o background */
-    background-repeat: no-repeat; /* Impede que a imagem se repita */
-    padding: auto 20px auto 10px; /* Define o preenchimento do corpo */
-    background-attachment: fixed; /* Mantém a imagem de fundo fixa durante a rolagem */
-}
-
-/* Estilos para o título da página */
-h1{
-    background-color:var(--cor2); /*Define a cor de fundo do título*/
-    position: relative;
-    z-index: 0;
-    font: normal 22pt arial; /* Define a fonte do título como negrito arial com tamanho 22pt */
-    width:50vh;
-    padding: 10px; /* Define o preenchimento do título */
-    border-radius:  0px; /* Define os cantos do título */
-    text-align: center; /* Centraliza o texto do título */
-    color:var(--cor8); /* Define a cor do texto do título como branco */
-    
+body {
+    background-image: url(background.png);
+    min-height: 100vh; /* Usamos min-height para flexibilidade */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 0 15px; /* Margem lateral leve */
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: flex-start; /* Ajustado para alinhar no topo, pois o botão fixo estará no final */
+    position: relative; /* Necessário para posicionar o botão fixo em relação ao body */
 }
 
 /* Estilos para o contêiner principal */
-.conteiner{
-    background-color: var(--cor7) ; /* Define a cor de fundo do contêiner */
-    width: 50vh; /* Define a largura do contêner como 40% da altura da viewport */
-    height: auto; /* Define a altura do contêner como automática */
-    padding-bottom: 10px; /* Define o preenchimento inferior do contêiner */
-    border-radius: 20px; /* Define os cantos do contêiner */
-    margin: 30px auto; /* Define as margens do contêiner */
+.conteiner {
+    background-color: var(--cor7); /* Cinza claro para contraste */
+    width: 100%;
+    max-width: 400px; /* Limita a largura para um layout mais compacto e legível */
+    height: auto;
+    padding: 20px; /* Mais espaço interno para clareza */
+    border-radius: 20px;
+    margin: 20px 0; /* Margem vertical para espaçamento */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra moderna e suave */
+    overflow: hidden; /* Garante que os elementos não ultrapassem os limites */
 }
 
-/* Estilos para o campo de input do produto */
-.input-prod{
-border: none; /* Remove a borda do input */
-border-radius: 15px; /* Define os cantos do input */
-width: 40vh; /* Define a largura do input como 34% da altura da viewport */
-height: 40px; /* Define a altura do input */
-padding: 10px; /* Define o preenchimento do input */
-padding: 5px;
-display: flex;
-align-items: center;
-text-align: center;
-margin: 15px auto; /* Define as margens do input */
+/* Estilos para o título da página */
+h1, h2 {
+    font-family: 'Arial', sans-serif;
+    font-weight: 600; /* Peso mais moderno */
+    color: var(--cor8);
+    text-align: center;
+    padding: 15px 0;
 }
 
-/* Estilos para o botão de adicionar produto */
-.add-prod{
-    padding: 5px 20px; /* Define o preenchimento do botão */
-    height: 40px; /* Define a altura do botão */
-    display: flex; /* Define o display do botão como flex */
-    margin: auto ; /* Define as margens do botão como automáticas */
-    border-radius: 15px; /* Define os cantos do botão */
-    font-size: 17pt; /* Define a fonte do botão */
-    color:var(--cor8); /* Define a cor do texto do botão como branco */
-    background-color:var(--cor1); /* Define a cor de fundo do botão */
-    cursor: pointer; /* Define o cursor do mouse como uma mãozinha */
-    
-}
-/* Estilos para o botão de apagar lista */
-.apagarLista{
-    background-color:var(--cor5) ; /* Define a cor de fundo do botão */
-    color:var(--cor8); /* Define a cor do texto do botão como branco */
-    width: 15vh;
-    border-radius: 15px; /* Define os cantos do botão */
-    padding: 8px; /* Define o preenchimento do botão */
-    font: bold 12pt arial; /* Define a fonte do botão como negrito arial com tamanho 12pt */
-
+h1 {
+    background-color: var(--cor2); /* Verde escuro para destaque */
+    font-size: 24px;
+    border-radius: 10px 10px 0 0; /* Bordas arredondadas apenas no topo */
 }
 
-/* Estilos para o botão de adicionar produto quando ativo */
-.add-prod:active{
-    opacity: 0.7; /* Define a opacidade do botão como 0.7 */
-    font-weight: bolder; /* Define a fonte do botão como mais negrito */
-}
-/* Estilos para a imagem */
-img{
-   height: 30px; /* Define a altura da imagem */
-}
-
-/* Estilos para a lista de produtos */
-.list-prod{
-    list-style: none; /* Remove os marcadores de lista */
-    width: 95%; /* Define a largura da lista como 95% */
-    margin: 15px 10px; /* Define as margens da lista */
-}
-
-/* Estilos para cada item da lista */
-.prod{
-    background-color: var(--cor4); /* Define a cor de fundo do item */
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); /* Define a sombra do item */
-    height: 50px; /* Define a altura do item */
-   display: flex; /* Define o display do item como flex */
-   align-items: center; /* Alinha os itens verticalmente */
-   justify-content: space-between; /* Distribui os itens horizontalmente */
-   padding: 0px 15px; /* Define o preenchimento do item */
-   border-radius: 15px; /* Define os cantos do item */
-   margin-bottom: 10px; /* Define a margem inferior do item */
-   cursor: pointer; /* Define o cursor como uma mãozinha */
-   transition: background-color 0.3s, text-decoration 0.3s; /* Adiciona transição */
-}
-
-/* Estilos para itens comprados */
-.comprado{
-    background-color: var(--cor6); /* Define a cor de fundo do item comprado */
-    text-decoration: line-through; /* Risca o texto do item comprado */
-}
-
-/* Estilos para o texto do item */
-p{
-    font-size: 22pt; /* Define o tamanho da fonte do texto do item */
-    transition: color 0.3s; /* Adiciona transição para a cor do texto */
-}
-
-/* Estilos para as mensagens de feedback */
-#mensagens {
-    margin-top: 20px; /* Espaço acima das mensagens */
-    padding: 30px 20px;
-}
-
-.foot-conteiner{
-    justify-content: space-between; /* Distribui os itens horizontalmente */
-    height: 50px; /* Define a altura do item */
-    display: flex; /* Define o display do item como flex */
-    align-items: center; /* Alinha os itens verticalmente */
+h2 {
+    font-size: 18px;
+    color: var(--cor1);
+    margin-bottom: 15px;
+    background-color: var(--cor4); /* Rosa pastel claro para contraste */
     padding: 10px;
-    margin-top: 0px;
+    border-radius: 8px;
+}
+
+/* Estilos para botões (Adicionar, Apagar Lista, Selecionar Itens, Sair) */
+button, .select-items-btn {
+    display: block;
+    width: 100%;
+    max-width: 200px; /* Limita a largura para evitar botões muito largos */
+    padding: 12px;
+    margin: 10px auto; /* Centraliza e adiciona espaçamento */
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--cor8);
+    background-color: var(--cor1); /* Cinza escuro para botões principais */
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease; /* Transição suave */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+button:hover, .select-items-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+}
+
+.apagarLista {
+    background-color: var(--cor5); /* Vermelho para destaque */
+    max-width: 150px; /* Botão menor para apagar */
+}
+
+.sair {
+    max-width: 100px; /* Botão de sair menor */
+    margin: 0; /* Remove margens adicionais para alinhamento */
+}
+
+/* Estilos para o botão "Adicionar à Lista" fixo, centralizado na parte inferior */
+.fixed-add-btn {
+    position: fixed; /* Fixa o botão na página */
+    bottom: 20px; /* Distância do fundo da página */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta para centralização exata */
+    width: 200px; /* Tamanho fixo para consistência */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+/* Estilos para inputs de login */
+#login-form input {
+    width: 100%;
+    max-width: 250px;
+    padding: 12px;
+    margin: 10px auto;
+    border: 1px solid var(--cor1);
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: var(--cor8);
+    transition: border-color 0.3s ease;
+}
+
+#login-form input:focus {
+    border-color: var(--cor3); /* Verde claro para destaque ao focar */
+    outline: none;
+}
+
+/* Estilos para a lista de produtos e categorias */
+.list-prod, .category {
+    list-style: none;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.prod, .item {
+    background-color: var(--cor4); /* Rosa pastel claro para itens */
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Sombra leve */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    color: var(--cor1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.prod:hover, .item:hover {
+    transform: translateX(5px); /* Efeito sutil ao passar o mouse */
+    background-color: var(--cor7); /* Cinza claro para feedback visual */
+}
+
+.comprado {
+    background-color: var(--cor6); /* Rosa avermelhado para itens comprados */
+    text-decoration: line-through;
+    color: var(--cor1);
+    opacity: 0.8;
+}
+
+/* Estilos para imagens (ícones) */
+img {
+    height: 24px; /* Reduzido para um visual mais compacto */
+    margin-right: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+/* Estilos para textos */
+p {
+    font-size: 16px;
+    color: var(--cor1);
+    transition: color 0.3s ease;
+}
+
+/* Estilos para a informação do usuário */
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--cor7); /* Linha divisória sutil */
+}
+
+.user-info p {
+    font-size: 16px;
+    color: var(--cor1);
+    font-weight: 500;
+}
+
+/* Estilos para o foot-conteiner (total e botão apagar) */
+.foot-conteiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    margin-top: 20px;
+    border-top: 1px solid var(--cor7); /* Linha divisória sutil */
 }
 
 /* Estilos para o total da compra */
-.total{
+.total {
     background-color: var(--cor1);
     color: var(--cor8);
-    padding: 5px;
-    border-radius: 15px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
-/* Estilos para o valor do total */
-.tot{
-    background-color: var(--cor8); /* Define a cor de fundo do valor do total */
-    display: inline-block; /* Define o display do valor do total como inline-block */
-    width: 95px; /* Define a largura do valor do total */
-    border-radius: 20px; /* Define os cantos do valor do total */
-    text-align: center; /* Centraliza o texto do valor do total */
-    color: var(--cor1);/*da cor ao texto*/
-    margin-left: 10px;/*da espaço entre o valor e o texto*/
+.tot {
+    background-color: var(--cor8);
+    color: var(--cor1);
+    padding: 8px 12px;
+    border-radius: 12px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+/* Estilos para mensagens de feedback */
+#mensagens {
+    margin-top: 15px;
+    padding: 10px;
 }
 
 #mensagens div {
-    padding: 10px; /* Preenchimento interno das mensagens */
-    border-radius: 5px; /* Bordas arredondadas */
-    margin-bottom: 5px; /* Espaço entre as mensagens */
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .sucesso {
-    background-color: #d4edda; /* Verde claro para mensagens de sucesso */
-    color: #155724; /* Verde escuro para mensagens de sucesso */
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745; /* Borda verde para destaque */
 }
 
 .erro {
-    background-color: #f8d7da; /* Vermelho claro para mensagens de erro */
-    color: #721c24; /* Vermelho escuro para mensagens de erro */
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545; /* Borda vermelha para destaque */
 }
 
-/* Estilos para o formulário de login */
+/* Estilos para o login container */
 .login-container {
-    background-color:var(--cor2);
-    width: 50vh;
+    background-color: var(--cor2);
+    width: 100%;
+    max-width: 400px;
     position: relative;
     z-index: 1;
-    font: bold 17pt arial;
-    height: auto;
-    padding: 10px 0px 10px 0px;
+    padding: 20px;
     border-radius: 20px;
-    margin: 100px auto -45px auto;
+    margin: 20px 0;
     color: var(--cor8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .login-container h2 {
-    text-align: center;
-    margin: 10px auto;
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: 600;
 }
 
-#login-form input {
-    width: 70%;
-    padding: 10px;
-    display: flex;
-    margin: 15px auto ;
-    border: none;
-    align-items: center;
-    border-radius: 15px;
-}
-
-#login-form button {
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 10px 5px;
-    margin: 10px auto;
-    background-color: var(--cor1);
-    color: var(--cor8);
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-.sair{
-    width: 10%;
-    display: block;
-    text-align: center;
-    padding: 10px;
-    margin: 0px auto;
-    background-color: var(--cor1);
-    color: var(--cor8);
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-/* Estilos para dispositivos móveis */
+/* Estilos responsivos para dispositivos móveis */
 @media (max-width: 520px) {
-    .conteiner {
-        width: 90%; /* Largura do contêiner ajustada para telas menores */
+    body {
+        padding: 0 10px; /* Margem lateral menor em telas pequenas */
     }
 
-    h1{
-        background-color:var(--cor2); /*Define a cor de fundo do título*/
-        position: relative;
-        z-index: 0;
-        font: normal 22pt arial; /* Define a fonte do título como negrito arial com tamanho 22pt */
-        width: 100%;
-        padding: 10px 10px 10px 10px; /* Define o preenchimento do título */
-        margin-top: -46px;
-        border-radius:  0px; /* Define os cantos do título */
-        text-align: center; /* Centraliza o texto do título */
-        color:var(--cor8); /* Define a cor do texto do título como branco */
+    .conteiner, .login-container {
+        max-width: 90%; /* Ajuste para telas menores */
+        margin: 10px 0;
+        padding: 15px;
     }
 
-    .login-container {
-        background-color:var(--cor2);
-        width: 90%;
-        position: relative;
-        z-index: 1;
-        font: bold 17pt arial;
-        height: auto;
-        padding: 10px 0px 2px 0px;
-        border-radius: 20px;
-        margin: 20px auto 0px auto;
-        color: var(--cor8);
+    h1 {
+        font-size: 20px;
+        padding: 10px 0;
     }
 
-    .input-prod {
-        width: 85%; /* Largura do input ajustada para telas menores */
+    h2 {
+        font-size: 16px;
+        padding: 8px;
     }
 
-    .total{
-        font-size: 2.5vh;
-        text-align: right;
-        border-radius: 20px;
-        padding: 5px;
+    button, .select-items-btn, .apagarLista, .sair, .fixed-add-btn {
+        font-size: 14px;
+        padding: 10px;
+        max-width: 180px;
     }
 
-    body{
-    background-image: url(background.png); /* Define a imagem       de fundo */
-    height: 110vh; /* Define a altura do corpo como 100% da viewport */
-    background-size: cover; /* Faz a imagem cobrir todo o background */
-    background-repeat: no-repeat; /* Impede que a imagem se repita */
-    padding: auto 10px; /* Define o preenchimento do corpo */
-    background-attachment: fixed; /* Mantém a imagem de fundo fixa durante a rolagem */
-}
-    .sair{
-        width: 15%;
-        margin: -20px 0px 0px 30px;
+    .prod, .item {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    img {
+        height: 20px;
+    }
+
+    .total, .tot {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .user-info p {
+        font-size: 14px;
+    }
+
+    #mensagens div {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .fixed-add-btn {
+        bottom: 10px; /* Ajuste para telas menores */
+        width: 160px; /* Reduzido para telas menores */
     }
 }
