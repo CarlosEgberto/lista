@@ -115,6 +115,10 @@ body.light-theme .user-header .sair {
     color: var(--cor-branca);
 }
 
+.user-header .sair i {
+    color: var(--cor-branca);
+}
+
 .user-header .sair:hover {
     opacity: 0.8;
 }
