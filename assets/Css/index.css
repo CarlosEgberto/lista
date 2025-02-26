@@ -119,7 +119,7 @@ body.light-theme .user-header .sair {
     color: var(--cor-branca);
 }
 
-.user-header not(.light-theme) .sair i {
+.user-header:not(.light-theme) .sair i {
     color: var(--cor-escura);
 }
 
