@@ -1,63 +1,79 @@
 // Dados das categorias e itens (pode ser colocado em um arquivo separado, como data.js)
 const shoppingListData = [
-  {
-      category: "Mercearia",
-      items: ["Arroz", "Feijão", "Grão-de-bico", "Óleo", "Farinha de trigo", "Farinha de rosca", "Polvilho", "Açúcar", "Milho verde", "Extrato de tomate", "Molho", "Azeite de oliva", "Ervilha", "Massa", "Pepino", "Palmito", "Fécula", "Sopa", "Outros"]
-  },
-  {
-      category: "Temperos",
-      items: ["Maionese", "Catchup", "Mostarda", "Caldo de aves", "Caldo de peixe", "Caldo de legumes", "Pimenta", "Curry", "Sal", "Louro", "Pimenta", "Cravo-da-Índia", "Noz-moscada", "Colorau", "Canela", "Alho", "Pimenta malagueta", "Outros"]
-  },
-  {
-      category: "Sobremesas",
-      items: ["Frutas em calda", "Gelatina cristalizada", "Pudim", "Calda para sorvete", "Mousse", "Outros"]
-  },
-  {
-      category: "Laticínios",
-      items: ["Leite", "Iogurte", "Manteiga", "Margarina", "Baida de soja", "Outros"]
-  },
-  {
-      category: "Bebidas",
-      items: ["Água", "Suco", "Refrigerante", "Cerveja", "Vinho", "Outros"]
-  },
-  {
-      category: "Queijos",
-      items: ["Mussarela", "Flamengo", "Fatiado", "Outros"]
-  },
-  {
-      category: "Açougue",
-      items: ["Costela", "Alcatra", "Tourninho", "Filé Mignon", "Açém", "Patinho", "Carne de porco", "Carne moída", "Guisado", "Outros"]
-  },
-  {
-      category: "Refeições rápidas",
-      items: ["Empanados", "Pizzados", "Massas prontas", "Tortas", "A vapor", "Outros"]
-  },
-  {
-      category: "Congelados",
-      items: ["Batatas pré-fritas", "Hambúrguer", "Almôndega", "Sorvete", "Frango", "Comida pronta", "Outros"]
-  },
-  {
-      category: "Padaria",
-      items: ["Pão de queijo", "Pão de forma", "Croissant", "Pão p/ cachorro-quente", "Outros"]
-  },
-  {
-      category: "Peixes e Frutos do Mar",
-      items: ["Pescada", "Filé de merluza", "Pintado", "Bacalhau", "Camarão", "Lula", "Polvo", "Mexilhão", "Ostra", "Outros"]
-  },
-  {
-      category: "Lanche",
-      items: ["Café", "Chá", "Bolos", "Cereais", "Mel", "Doces e compotas", "Biscoitos", "Achocolatados", "Outros"]
-  },
-  {
-      category: "Enlatados",
-      items: ["Creme de leite", "Leite condensado", "Salsicha", "Sardinhas", "Cogumelo", "Milho", "Ervilha", "Aspargo", "Azeitona", "Outros"]
-  },
-  {
-      category: "Doces",
-      items: ["Pastilhas", "Chicletes", "Balas", "Chocolates", "Outros"]
-  },
-  {
-      category: "Aperitivos",
-      items: ["Milho para pipoca", "Amendoim", "Outros"]
-  }
-];
+    {
+        category: "Açougue",
+        items: ["Alcatra", "Açém", "Bacon", "Calabresa", "Carne moída", "Carré", "Costela", "Filé Mignon", "Frango", "Frios", "Guisado", "Linguiça", "Patinho", "Pernil", "Sobrecoxa", "Tourninho"]
+    },
+    {
+        category: "Aperitivos",
+        items: ["Amendoim", "Batata Palha", "Milho para pipoca"]
+    },
+    {
+        category: "Bebidas",
+        items: ["Água", "Achocolatado", "Café", "Cerveja", "Chá","Refrigerante", "Suco", "Vinho"]
+    },
+    {
+        category: "Congelados",
+        items: ["Almôndega", "Batatas pré-fritas", "Comida pronta", "Frango", "Hambúrguer","Sorvete"]
+    },
+    {
+        category: "Doces",
+        items: ["Balas", "Chicletes", "Chocolates", "Doce de Leite", "Pastilhas"]
+    },
+    {
+        category: "Enlatados",
+        items: ["Azeitona", "Cogumelo", "Creme de leite", "Ervilha", "Leite condensado", "Milho", "Salsicha", "Sardinhas"]
+    },
+    {
+        category: "Frutas",
+        items: ["Banana", "Limão", "Maça", "Mamão", "Manga", "Morango", "Tomate"]
+    },
+    {
+        category: "Higiene",
+        items: ["Creme Dental", "Desodorante", "Enxaguante Bucal", "Fio Dental", "Papel Higienico", "Prestobarba", "Sabonete"]
+    },
+    {
+        category: "Lanche",
+        items: ["Achocolatados", "Bolos", "Café", "Cereais", "Chá", "Doces e compotas", "Geleias ou doces pastosos", "Mel"]
+    },
+    {
+        category: "Laticínios ou Ovos",
+        items: ["Iogurte", "Leite", "Leite em pó", "Manteiga", "Margarina", "Ovo", "Queijo ralado", "Requeijao", "Yakult"]
+    },
+    {
+        category: "Legumes e Verduras",
+        items: ["Aipim", "Alface", "Batata", "Batata Doce", "Beteraba", "Cebola", "Cenoura", "Chuchu", "Couve", "Limão", "Pimentão", "Tomate"]
+    },
+    {
+        category: "Mercearia",
+        items: ["Açúcar", "Amido de milho", "Arroz", "Aveia", "Azeite de oliva", "Ervilha", "Espaguete", "Extrato de tomate", "Farinha de mandioca", "Farinha de rosca", "Farinha de trigo", "Farofa", "Fécula", "Feijão", "Fermento", "Grão-de-bico", "Milho verde", "Molho", "Molho de tomate", "Molho inglês", "Óleo", "Palmito", "Penne", "Pepino", "Polvilho", "Sopa", "Vinagre"]
+    },
+    {
+        category: "Padaria",
+        items: ["Croissant", "Filtro de Café", "Pão de forma", "Pão de queijo", "Pão p/ cachorro-quente"]
+    },
+    {
+        category: "Peixes e Frutos do Mar",
+        items: ["Bacalhau", "Camarão", "Filé de merluza", "Lula", "Mexilhão", "Ostra", "Pescada", "Pintado", "Polvo", "Sardinha"]
+    },
+    {
+        category: "Produtos de Limpeza",
+        items: ["Amaciante", "Arpic", "Cheirinho de Chão", "Cif", "Cloro", "Cloro Ativo", "Desinfetante", "Detergente", "Esponja", "Limpa Vidro", "Lustra Moveis", "Pato", "Sabão Liquido", "Veja"]
+    },
+    {
+        category: "Queijos",
+        items: ["Brie", "Mussarela", "Prato"]
+    },
+    {
+        category: "Refeições rápidas",
+        items: ["Biscoito", "Empanados", "Massas prontas", "Pizza", "Tortas"]
+    },
+    {
+        category: "Sobremesas",
+        items: ["Calda para sorvete", "Frutas em calda", "Gelatina cristalizada", "Mousse","Pudim"]
+    },
+    {
+        category: "Temperos",
+        items: ["Alho", "Caldo de aves", "Caldo de Carne", "Caldo de legumes", "Canela", "Colorau", "Cravo-da-Índia", "Curry", "ketchup", "Louro", "Maionese", "Mostarda", "Noz-moscada", "Oregano", "Paprica Defumada", "Paprica Doce", "Pimenta", "Pimenta malagueta", "Sal", "Shoyu"]
+    }
+  ];
