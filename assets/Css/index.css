@@ -219,7 +219,7 @@ button i {
 }
 
 body.light-theme button i {
-    color: var(--cor-cinza-claro);
+    color: var(--cor-cinza-escuro);
 }
 
 body:not(.light-theme) button i {
