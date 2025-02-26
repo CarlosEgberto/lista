@@ -377,7 +377,7 @@ body:not(.light-theme) #theme-icon {
 /* Estilos responsivos */
 @media (max-width: 520px) {
     .conteiner {
-        max-width: 90%;
+        max-width: 100%;
         margin: 10px 0;
         padding: 15px;
     }
