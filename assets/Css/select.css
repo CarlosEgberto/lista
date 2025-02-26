@@ -267,6 +267,6 @@ body:not(.light-theme) .add-custom-btn i {
     .fixed-add-btn {
         font-size: 14px;
         padding: 10px;
-        width: 160px;
+        width: 85%;
     }
 }
