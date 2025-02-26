@@ -5,24 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Compras</title>
     <link rel="stylesheet" href="assets/Css/style.css">
+    <!-- Adicione o link para o Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Adicione o favicon usando Font Awesome -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'><path fill='%23000000' d='M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z'/></svg>">
 </head>
 <body>
     <div class="conteiner" id="conteudo-principal">
-        <h1>Lista de Compras</h1>
-        <div class="user-info">
-            <p>Bem-vindo, <span id="nome-usuario"></span>!</p>
-            <button class="sair" onclick="sair()">Sair</button>
-        </div>
+        <header class="app-header">
+            <h1><i class="fas fa-list"></i> Lista de Compras</h1>
+            <div class="user-header">
+                <p>Bem-vindo, <span id="nome-usuario"></span>!</p>
+                <button class="sair" onclick="sair()">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </button>
+            </div>
+        </header>
         <ul class="list-prod"></ul>
-        <a href="selection.html" class="select-items-btn">Selecionar Itens</a>
-        <div class="foot-conteiner">
-            <button class="apagarLista">Apagar Lista</button>
+        <div class="select-items-container">
+            <p class="select-items-message">Não lembra o que procura?</p>
+            <button class="select-items-btn" onclick="window.location.href='selection.html'">
+                <i class="fas fa-search"></i> Selecionar Itens
+            </button>
+        </div>
+        <div class="footer-actions">
+            <button class="apagarLista" onclick="apagarTudo()">
+                <i class="fas fa-trash-alt"></i> Apagar Lista
+            </button>
             <span class="total">Total: R$ <span class="tot">0.00</span></span>
         </div>
-        
         <div id="mensagens"></div>
     </div>
 
-    <script src="assets/js/script.js"></script>
+    <!-- Toggle de tema fixo no fim da página -->
+    <button class="theme-toggle fixed-theme-toggle" onclick="toggleTheme()">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </button>
+
+    <!-- Carrega o script com defer para garantir que o DOM esteja pronto -->
+    <script src="assets/js/script.js" defer></script>
 </body>
 </html>

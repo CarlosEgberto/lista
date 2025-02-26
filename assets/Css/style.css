@@ -4,228 +4,508 @@
     padding: 0;
     box-sizing: border-box;
     outline: none;
-    font-family: 'Arial', sans-serif; /* Substituído por uma fonte mais moderna e universal */
+    font-family: 'Roboto', sans-serif; /* Fonte moderna e universal */
 }
 
-/* Variáveis de cores (mantidas do original) */
+/* Variáveis de cores (temas claro e escuro) */
 :root {
-    --cor1: #4D5057; /* Cinza escuro */
-    --cor2: #4E6E5D; /* Verde escuro */
-    --cor3: #4DA167; /* Verde claro */
-    --cor4: #f4f0fa; /* Rosa pastel claro */
-    --cor5: #ff0000; /* Vermelho */
-    --cor6: #ff7c7c; /* Rosa avermelhado */
-    --cor7: #CFCFCF; /* Cinza claro */
-    --cor8: #fff; /* Branco */
+    --cor-escura: #1A1A1A; /* Preto escuro */
+    --cor-cinza-escuro: #333333; /* Cinza escuro */
+    --cor-cinza-claro: #F5F5F5; /* Cinza claro */
+    --cor-branca: #FFFFFF; /* Branco */
+    --cor-vermelha: #FF4444; /* Vermelho para destaque (botão apagar) */
+    --cor-clara-fundo: #F0F0F0; /* Fundo claro */
+    --cor-clara-texto: #333333; /* Texto escuro no tema claro */
+    --cor-clara-botao: #90EE90; /* Verde claro para o botão "Selecionar Itens" */
 }
 
-/* Estilos para o corpo da página */
+/* Estilos para o corpo da página (padrão: tema escuro) */
 body {
-    background-image: url(background.png);
-    min-height: 100vh; /* Usamos min-height para flexibilidade */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 0 15px; /* Margem lateral leve */
+    background-color: var(--cor-escura); /* Fundo preto escuro */
+    min-height: 100vh;
     display: flex;
-    justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    align-items: flex-start; /* Ajustado para alinhar no topo, pois o botão fixo estará no final */
-    position: relative; /* Necessário para posicionar o botão fixo em relação ao body */
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 15px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme {
+    background-color: var(--cor-clara-fundo); /* Fundo claro */
 }
 
 /* Estilos para o contêiner principal */
 .conteiner {
-    background-color: var(--cor7); /* Cinza claro para contraste */
+    background-color: var(--cor-cinza-escuro); /* Cinza escuro como fundo principal */
     width: 100%;
-    max-width: 400px; /* Limita a largura para um layout mais compacto e legível */
+    max-width: 400px;
     height: auto;
-    padding: 20px; /* Mais espaço interno para clareza */
-    border-radius: 20px;
-    margin: 20px 0; /* Margem vertical para espaçamento */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra moderna e suave */
-    overflow: hidden; /* Garante que os elementos não ultrapassem os limites */
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Estilos para o título da página */
-h1, h2 {
-    font-family: 'Arial', sans-serif;
-    font-weight: 600; /* Peso mais moderno */
-    color: var(--cor8);
-    text-align: center;
+body.light-theme .conteiner {
+    background-color: var(--cor-branca); /* Fundo branco no tema claro */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para o cabeçalho */
+.app-header {
+    background-color: var(--cor-cinza-escuro);
     padding: 15px 0;
+    border-bottom: 1px solid var(--cor-cinza-claro);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-h1 {
-    background-color: var(--cor2); /* Verde escuro para destaque */
+body.light-theme .app-header {
+    background-color: var(--cor-branca);
+    border-bottom: 1px solid var(--cor-cinza-escuro);
+}
+
+.app-header h1 {
     font-size: 24px;
-    border-radius: 10px 10px 0 0; /* Bordas arredondadas apenas no topo */
+    color: var(--cor-branca);
+    text-align: center;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
-h2 {
-    font-size: 18px;
-    color: var(--cor1);
-    margin-bottom: 15px;
-    background-color: var(--cor4); /* Rosa pastel claro para contraste */
-    padding: 10px;
-    border-radius: 8px;
+body.light-theme .app-header h1 {
+    color: var(--cor-clara-texto);
 }
 
-/* Estilos para botões (Adicionar, Apagar Lista, Selecionar Itens, Sair) */
-button, .select-items-btn {
-    display: block;
-    width: 100%;
-    max-width: 200px; /* Limita a largura para evitar botões muito largos */
-    padding: 12px;
-    margin: 10px auto; /* Centraliza e adiciona espaçamento */
-    border-radius: 12px;
+/* Estilos para o cabeçalho do index.html (mensagem acima do ícone de sair) */
+.user-header {
+    display: flex;
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    margin-top: 10px;
+}
+
+.user-header p {
+    color: var(--cor-branca);
     font-size: 16px;
-    font-weight: 500;
-    color: var(--cor8);
-    background-color: var(--cor1); /* Cinza escuro para botões principais */
+    margin-bottom: 10px; /* Espaço entre a mensagem e o botão */
+    transition: color 0.3s ease;
+}
+
+body.light-theme .user-header p {
+    color: var(--cor-clara-texto);
+}
+
+.user-header .sair {
+    background-color: var(--cor-cinza-claro);
+    color: var(--cor-escura);
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 14px;
     border: none;
     cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.2s ease; /* Transição suave */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-button:hover, .select-items-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+body.light-theme .user-header .sair {
+    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-branca);
 }
 
-.apagarLista {
-    background-color: var(--cor5); /* Vermelho para destaque */
-    max-width: 150px; /* Botão menor para apagar */
+.user-header .sair:hover {
+    opacity: 0.8;
 }
 
-.sair {
-    max-width: 100px; /* Botão de sair menor */
-    margin: 0; /* Remove margens adicionais para alinhamento */
+/* Estilos para o toggle de tema fixo no fim da página */
+.fixed-theme-toggle {
+    position: fixed;
+    bottom: 10px; /* Fica próximo ao fundo da tela */
+    left: 50%;
+    padding: 8px 15px;
+    background-color: var(--cor-cinza-claro);
+    color: var(--cor-escura);
+    border-radius: 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Estilos para o botão "Adicionar à Lista" fixo, centralizado na parte inferior */
-.fixed-add-btn {
-    position: fixed; /* Fixa o botão na página */
-    bottom: 20px; /* Distância do fundo da página */
-    left: 50%; /* Centraliza horizontalmente */
-    transform: translateX(-50%); /* Ajusta para centralização exata */
-    width: 200px; /* Tamanho fixo para consistência */
-    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+body.light-theme .fixed-theme-toggle {
+    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-branca);
 }
 
-/* Estilos para inputs de login */
-#login-form input {
-    width: 100%;
-    max-width: 250px;
-    padding: 12px;
-    margin: 10px auto;
-    border: 1px solid var(--cor1);
-    border-radius: 12px;
-    font-size: 16px;
-    background-color: var(--cor8);
-    transition: border-color 0.3s ease;
+.fixed-theme-toggle:hover {
+    opacity: 0.8;
 }
 
-#login-form input:focus {
-    border-color: var(--cor3); /* Verde claro para destaque ao focar */
-    outline: none;
+#theme-icon {
+    font-size: 20px; /* Tamanho do ícone */
+    transition: color 0.3s ease;
 }
 
-/* Estilos para a lista de produtos e categorias */
-.list-prod, .category {
+body.light-theme #theme-icon {
+    color: var(--cor-branca);
+}
+
+body:not(.light-theme) #theme-icon {
+    color: var(--cor-escura);
+}
+
+/* Estilos para a lista de produtos */
+.list-prod {
     list-style: none;
     width: 100%;
     margin: 15px 0;
 }
 
-.prod, .item {
-    background-color: var(--cor4); /* Rosa pastel claro para itens */
+.prod {
+    background-color: var(--cor-cinza-claro);
     padding: 12px 15px;
     margin-bottom: 10px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Sombra leve */
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Espaço entre o nome e a lixeira */
     font-size: 16px;
-    color: var(--cor1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: var(--cor-escura);
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
-.prod:hover, .item:hover {
-    transform: translateX(5px); /* Efeito sutil ao passar o mouse */
-    background-color: var(--cor7); /* Cinza claro para feedback visual */
+body.light-theme .prod {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
+}
+
+.prod:hover {
+    background-color: #E0E0E0;
+}
+
+body.light-theme .prod:hover {
+    background-color: #E8E8E8;
 }
 
 .comprado {
-    background-color: var(--cor6); /* Rosa avermelhado para itens comprados */
-    text-decoration: line-through;
-    color: var(--cor1);
+    background-color: #D3D3D3; /* Cor diferente para itens comprados */
+    text-decoration: line-through; /* Texto riscado */
+    color: var(--cor-escura);
     opacity: 0.8;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Estilos para imagens (ícones) */
-img {
-    height: 24px; /* Reduzido para um visual mais compacto */
-    margin-right: 10px;
+body.light-theme .comprado {
+    background-color: #E0E0E0;
+    color: var(--cor-clara-texto);
+}
+
+.prod i {
+    font-size: 20px; /* Tamanho do ícone de lixeira */
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-img:hover {
-    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+body.light-theme .prod i {
+    color: var(--cor-clara-texto);
 }
 
-/* Estilos para textos */
-p {
+body:not(.light-theme) .prod i {
+    color: var(--cor-escura);
+}
+
+.prod i:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos para botões */
+button, .select-items-btn, .add-prod {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+    padding: 12px;
+    margin: 10px auto;
+    border-radius: 12px;
     font-size: 16px;
-    color: var(--cor1);
+    font-weight: 500;
+    color: var(--cor-escura);
+    background-color: var(--cor-cinza-escuro);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme button, body.light-theme .select-items-btn, body.light-theme .add-prod {
+    color: var(--cor-clara-texto);
+    background-color: var(--cor-branca);
+}
+
+button:hover, .select-items-btn:hover, .add-prod:hover {
+    opacity: 0.9;
+}
+
+button i, .select-items-btn i, .add-prod i {
+    margin-right: 8px; /* Espaço entre o ícone e o texto */
+    font-size: 18px; /* Tamanho dos ícones nos botões */
     transition: color 0.3s ease;
 }
 
-/* Estilos para a informação do usuário */
-.user-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--cor7); /* Linha divisória sutil */
+body.light-theme button i, body.light-theme .select-items-btn i, body.light-theme .add-prod i {
+    color: var(--cor-clara);
 }
 
-.user-info p {
-    font-size: 16px;
-    color: var(--cor1);
-    font-weight: 500;
+body:not(.light-theme) button i, body:not(.light-theme) .select-items-btn i, body:not(.light-theme) .add-prod i {
+    color: var(--cor-escura);
 }
 
-/* Estilos para o foot-conteiner (total e botão apagar) */
-.foot-conteiner {
+.apagarLista {
+    background-color: var(--cor-vermelha);
+    max-width: 150px;
+}
+
+/* Estilos para o contêiner e mensagem do botão "Selecionar Itens" */
+.select-items-container {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.select-items-message {
+    color: var(--cor-branca);
+    font-size: 14px;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .select-items-message {
+    color: var(--cor-clara-texto);
+}
+
+.select-items-btn {
+    background-color: var(--cor-clara-botao); /* Verde claro para o botão "Selecionar Itens" */
+    color: var(--cor-escura);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .select-items-btn {
+    background-color: var(--cor-clara-botao);
+    color: var(--cor-escura);
+}
+
+/* Estilos para o botão fixo "Adicionar à Lista" */
+.fixed-add-btn {
+    position: fixed;
+    bottom: 10px; /* Posicionado mais acima para evitar sobreposição com o toggle */
+    
+    width: 200px;
+    padding: 10px;
+    background-color:#bbbbbb;
+    border:solid var(--cor-cinza-escuro);
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+/* Estilos para o footer */
+.footer-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 0;
     margin-top: 20px;
-    border-top: 1px solid var(--cor7); /* Linha divisória sutil */
+    border-top: 1px solid var(--cor-cinza-claro);
+    transition: border-color 0.3s ease;
 }
 
-/* Estilos para o total da compra */
+body.light-theme .footer-actions {
+    border-top: 1px solid var(--cor-cinza-escuro);
+}
+
 .total {
-    background-color: var(--cor1);
-    color: var(--cor8);
+    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-branca);
     padding: 10px 15px;
     border-radius: 12px;
     font-size: 16px;
     font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .total {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
 }
 
 .tot {
-    background-color: var(--cor8);
-    color: var(--cor1);
+    background-color: var(--cor-branca);
+    color: var(--cor-escura);
     padding: 8px 12px;
     border-radius: 12px;
     margin-left: 10px;
     font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .tot {
+    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-branca);
+}
+
+/* Estilos para categorias e itens na página de seleção */
+.category {
+    margin-bottom: 20px;
+}
+
+.category h2 {
+    font-size: 18px;
+    color: var(--cor-branca);
+    padding: 10px;
+    background-color: var(--cor-cinza-escuro);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .category h2 {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
+}
+
+.item {
+    background-color: var(--cor-cinza-claro);
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: var(--cor-escura);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .item {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
+}
+
+.item input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+    transform: scale(1.2); /* Aumenta o tamanho do checkbox para melhor usabilidade */
+    transition: border-color 0.3s ease;
+}
+
+body.light-theme .item input[type="checkbox"] {
+    border-color: var(--cor-clara-texto);
+}
+
+/* Estilos para o contêiner de login (centralizado, cantos arredondados) */
+.login-container {
+    background-color: var(--cor-cinza-escuro);
+    width: 100%;
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 0;
+    color: var(--cor-branca);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-theme .login-container {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .login-container h2 {
+    color: var(--cor-clara-texto);
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-form input {
+    width: 100%;
+    max-width: 250px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid var(--cor-cinza-claro);
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: var(--cor-branca);
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme #login-form input {
+    border-color: var(--cor-cinza-escuro);
+    color: var(--cor-clara-texto);
+}
+
+#login-form input:focus {
+    border-color: var(--cor-clara-botao); /* Verde claro para destaque ao focar */
+    outline: none;
+}
+
+#login-form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+    padding: 12px;
+    margin: 20px 0 10px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--cor-branca);
+    background-color: var(--cor-cinza-escuro);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme #login-form button {
+    color: var(--cor-clara-texto);
+    background-color: var(--cor-branca);
+}
+
+#login-form button:hover {
+    opacity: 0.9;
+}
+
+#login-form button i {
+    margin-right: 8px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme #login-form button i {
+    color: var(--cor-clara-texto);
+}
+
+body:not(.light-theme) #login-form button i {
+    color: var(--cor-branca);
 }
 
 /* Estilos para mensagens de feedback */
@@ -240,67 +520,35 @@ p {
     margin-bottom: 10px;
     font-size: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .sucesso {
     background-color: #d4edda;
     color: #155724;
-    border-left: 4px solid #28a745; /* Borda verde para destaque */
+    border-left: 4px solid #28a745;
 }
 
 .erro {
     background-color: #f8d7da;
     color: #721c24;
-    border-left: 4px solid #dc3545; /* Borda vermelha para destaque */
+    border-left: 4px solid #dc3545;
 }
 
-/* Estilos para o login container */
-.login-container {
-    background-color: var(--cor2);
-    width: 100%;
-    max-width: 400px;
-    position: relative;
-    z-index: 1;
-    padding: 20px;
-    border-radius: 20px;
-    margin: 20px 0;
-    color: var(--cor8);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.login-container h2 {
-    margin: 10px 0;
-    font-size: 20px;
-    font-weight: 600;
-}
-
-/* Estilos responsivos para dispositivos móveis */
+/* Estilos responsivos */
 @media (max-width: 520px) {
-    body {
-        padding: 0 10px; /* Margem lateral menor em telas pequenas */
-    }
-
     .conteiner, .login-container {
-        max-width: 90%; /* Ajuste para telas menores */
+        max-width: 90%;
         margin: 10px 0;
         padding: 15px;
     }
 
-    h1 {
+    .app-header h1, .login-container h2 {
         font-size: 20px;
-        padding: 10px 0;
     }
 
-    h2 {
-        font-size: 16px;
-        padding: 8px;
-    }
-
-    button, .select-items-btn, .apagarLista, .sair, .fixed-add-btn {
+    .user-header p {
         font-size: 14px;
-        padding: 10px;
-        max-width: 180px;
     }
 
     .prod, .item {
@@ -308,26 +556,39 @@ p {
         padding: 10px;
     }
 
-    img {
-        height: 20px;
+    button, .select-items-btn, .theme-toggle, .fixed-add-btn, #login-form button {
+        font-size: 14px;
+        padding: 10px;
+        max-width: 180px;
+    }
+    .apagarLista{
+        max-width: 130px;
     }
 
-    .total, .tot {
-        font-size: 14px;
+    .total {
+        font-size: 15px;
         padding: 8px 10px;
     }
+    .tot{ font-size: 14px;}
 
-    .user-info p {
-        font-size: 14px;
+    .select-items-message, .category h2 {
+        font-size: 12px;
     }
 
-    #mensagens div {
-        font-size: 14px;
+    #theme-icon, .prod i, button i, .select-items-btn i, .fixed-add-btn i, #login-form button i {
+        font-size: 16px; /* Ajuste para telas menores */
+    }
+
+    .login-container {
+        padding: 15px;
+    }
+
+    #login-form input {
+        max-width: 200px;
         padding: 10px;
     }
 
-    .fixed-add-btn {
-        bottom: 10px; /* Ajuste para telas menores */
+    .fixed-add-btn, .fixed-theme-toggle {
         width: 160px; /* Reduzido para telas menores */
     }
 }

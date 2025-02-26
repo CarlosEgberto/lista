@@ -1,9 +1,5 @@
-// Seleciona os elementos HTML e os armazena em variáveis para facilitar o acesso.
-const listaCompleta = document.querySelector('.list-prod');
-const botaoApagarTudo = document.querySelector('.apagarLista');
-const totalCompraElemento = document.querySelector('.tot');
-const nomeUsuario = document.querySelector('#nome-usuario');
-const conteudoPrincipal = document.querySelector('#conteudo-principal');
+// Seleciona os elementos HTML e os armazena em variáveis (serão inicializados no DOMContentLoaded)
+let listaCompleta, botaoApagarTudo, totalCompraElemento, nomeUsuario, conteudoPrincipal, themeToggle, themeIcon;
 
 // Recupera a lista de compras do localStorage ou inicializa um array vazio.
 let minhaLista = JSON.parse(localStorage.getItem('listaDeCompras')) || [];
@@ -14,23 +10,22 @@ function exibirMensagem(mensagem, tipo) {
     divMensagens.innerHTML = `<div class="${tipo}">${mensagem}</div>`;
 }
 
-// Função para exibir os produtos na lista.
+// Função para exibir os produtos na lista, com verificação para null
 function mostrarProdutos() {
+    if (!listaCompleta) {
+        console.error("Elemento .list-prod não encontrado no DOM.");
+        return; // Sai da função se listaCompleta for null
+    }
+
     listaCompleta.innerHTML = minhaLista.map((item, index) => `
-        <li class="prod ${item.concluida ? "comprado" : ""}" data-index="${index}"> 
-            <img src="assets/images/bag-check.svg" alt="Marcar como comprado" onclick="done(${index})">
+        <li class="prod ${item.concluida ? 'comprado' : ''}" data-index="${index}">
             <p class="itemNome" onclick="solicitarPreco(${index})">${item.produtos}</p>
-            <img src="assets/images/trash.svg" alt="Remover item" onclick="del(${index})">
+            <i class="fas fa-trash-alt" onclick="del(${index})"></i>
         </li>
     `).join('');
 
     localStorage.setItem('listaDeCompras', JSON.stringify(minhaLista));
     atualizarTotal();
-
-    const itensNomeLista = document.querySelectorAll('.itemNome');
-    itensNomeLista.forEach(item => {
-        item.addEventListener('click', solicitarPreco);
-    });
 
     atualizarClassesComprado();
 }
@@ -40,7 +35,7 @@ function atualizarClassesComprado() {
     const itensLista = document.querySelectorAll('.prod');
     itensLista.forEach(item => {
         const index = item.dataset.index;
-        if (minhaLista[index] && minhaLista[index].preco === 0) {
+        if (minhaLista[index] && (minhaLista[index].preco === 0 || !minhaLista[index].quantidade)) {
             item.classList.remove('comprado');
             minhaLista[index].concluida = false;
         }
@@ -53,45 +48,42 @@ function del(index) {
     mostrarProdutos();
 }
 
-// Função para marcar um produto como comprado (ou desmarcar).
-function done(index) {
-    minhaLista[index].concluida = !minhaLista[index].concluida;
-    mostrarProdutos();
-}
-
-// Função para solicitar o preço do produto ao usuário.
+// Função para solicitar o preço e a quantidade do produto ao usuário.
 function solicitarPreco(index) {
-    let precoStr = prompt("Digite o preço do produto:", minhaLista[index].preco);
+    let precoStr = prompt("Digite o preço do produto (R$):", minhaLista[index].preco || 0);
+    let quantidadeStr = prompt("Digite a quantidade do produto:", minhaLista[index].quantidade || 1);
 
-    if (precoStr === null) {
+    if (precoStr === null || quantidadeStr === null) {
         return;
     }
 
     const preco = parseFloat(precoStr.replace(",", "."));
+    const quantidade = parseInt(quantidadeStr);
 
-    if (isNaN(preco) || preco < 0) {
-        exibirMensagem("Preço inválido. Digite um número maior ou igual a zero.", 'erro');
+    if (isNaN(preco) || preco < 0 || isNaN(quantidade) || quantidade <= 0) {
+        exibirMensagem("Preço ou quantidade inválidos. Digite números maiores que zero.", 'erro');
         return;
     }
 
     minhaLista[index].preco = preco;
+    minhaLista[index].quantidade = quantidade;
+    minhaLista[index].concluida = true; // Marca como comprado ao inserir preço e quantidade
     localStorage.setItem('listaDeCompras', JSON.stringify(minhaLista));
-
-    if (preco === 0) {
-        minhaLista[index].concluida = false;
-    } else {
-        minhaLista[index].concluida = true;
-    }
 
     atualizarTotal();
     mostrarProdutos();
-    exibirMensagem('Preço atualizado com sucesso!', 'sucesso');
+    exibirMensagem('Preço e quantidade atualizados com sucesso!', 'sucesso');
 }
 
 // Função para atualizar o total da compra.
 function atualizarTotal() {
-    let total = minhaLista.reduce((soma, item) => soma + item.preco, 0);
-    totalCompraElemento.textContent = `${total.toFixed(2)}`;
+    if (!totalCompraElemento) {
+        console.error("Elemento .tot não encontrado no DOM.");
+        return;
+    }
+
+    let total = minhaLista.reduce((soma, item) => soma + (item.preco * (item.quantidade || 1)), 0);
+    totalCompraElemento.textContent = total.toFixed(2);
 }
 
 // Função para apagar toda a lista de compras.
@@ -108,10 +100,37 @@ function checkLogin() {
     const apelido = localStorage.getItem('apelido');
 
     if (!nome || !apelido) {
-        window.location.href = 'login.html'; // Redireciona para login se não estiver logado
+        window.location.href = 'login.html';
     } else {
-        nomeUsuario.textContent = apelido; // Exibe o apelido do usuário
-        conteudoPrincipal.style.display = 'block'; // Mostra a página principal
+        if (!nomeUsuario) {
+            console.error("Elemento #nome-usuario não encontrado no DOM.");
+            return;
+        }
+        nomeUsuario.textContent = apelido;
+        if (!conteudoPrincipal) {
+            console.error("Elemento #conteudo-principal não encontrado no DOM.");
+            return;
+        }
+        conteudoPrincipal.style.display = 'block';
+    }
+}
+
+// Função para alternar entre temas claro e escuro com ícones
+function toggleTheme() {
+    if (!themeIcon || !themeToggle) {
+        console.error("Elementos .theme-toggle ou #theme-icon não encontrados no DOM.");
+        return;
+    }
+
+    const body = document.body;
+    const isLight = body.classList.toggle('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+    // Alterna entre os ícones de lua (escuro) e sol (claro)
+    if (isLight) {
+        themeIcon.className = 'fas fa-sun'; // Sol para tema claro
+    } else {
+        themeIcon.className = 'fas fa-moon'; // Lua para tema escuro
     }
 }
 
@@ -122,17 +141,20 @@ function handleLogin() {
         formularioLogin.addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const nome = document.getElementById('nome').value;
-            const apelido = document.getElementById('apelido').value;
+            const nome = document.getElementById('nome').value.trim(); // Remove espaços extras
+            const apelido = document.getElementById('apelido').value.trim(); // Remove espaços extras
 
             if (nome && apelido) {
                 localStorage.setItem('nome', nome);
                 localStorage.setItem('apelido', apelido);
-                window.location.href = 'index.html'; // Redireciona para a página principal após login
+                window.location.href = 'index.html'; // Redireciona para a página principal
+                console.log("Login bem-sucedido, redirecionando para index.html");
             } else {
                 exibirMensagem('Preencha todos os campos!', 'erro');
             }
         });
+    } else {
+        console.error("Elemento #login-form não encontrado no DOM.");
     }
 }
 
@@ -140,33 +162,70 @@ function handleLogin() {
 function sair() {
     localStorage.removeItem('nome');
     localStorage.removeItem('apelido');
-    window.location.href = 'login.html'; // Redireciona para a página de login após sair
+    window.location.href = 'login.html';
 }
 
-// Carrega os itens selecionados e verifica o login ao carregar a página
+// Carrega o tema, elementos e a lista ao carregar a página
 window.addEventListener('DOMContentLoaded', function() {
+    // Inicializa os elementos do DOM
+    listaCompleta = document.querySelector('.list-prod');
+    botaoApagarTudo = document.querySelector('.apagarLista');
+    totalCompraElemento = document.querySelector('.tot');
+    nomeUsuario = document.querySelector('#nome-usuario');
+    conteudoPrincipal = document.querySelector('#conteudo-principal');
+    themeToggle = document.querySelector('.theme-toggle');
+    themeIcon = document.querySelector('#theme-icon');
+
+    // Verifica se os elementos principais existem
+    if (!listaCompleta || !botaoApagarTudo || !totalCompraElemento || !nomeUsuario || !conteudoPrincipal || !themeToggle || !themeIcon) {
+        console.error("Um ou mais elementos do DOM não foram encontrados. Verifique o HTML.");
+    }
+
+    // Carrega o tema salvo no localStorage (padrão: escuro)
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const body = document.body;
+    if (savedTheme === 'light') {
+        body.classList.add('light-theme');
+        themeIcon.className = 'fas fa-sun'; // Sol para tema claro
+    } else {
+        body.classList.remove('light-theme');
+        themeIcon.className = 'fas fa-moon'; // Lua para tema escuro
+    }
+
+    // Carrega os itens selecionados e verifica o login, apenas se for a página correta
     const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
-    if (selectedItems.length > 0) {
+    if (selectedItems.length > 0 && window.location.pathname.includes('index.html')) {
         selectedItems.forEach(item => {
             if (!minhaLista.some(existing => existing.produtos === item)) {
                 minhaLista.push({
                     produtos: item,
                     concluida: false,
-                    preco: 0
+                    preco: 0,
+                    quantidade: 1
                 });
             }
         });
         localStorage.removeItem('selectedItems');
-        mostrarProdutos();
+        if (listaCompleta) {
+            mostrarProdutos(); // Carrega a lista apenas se o elemento existir
+        }
     }
 
-    // Verifica se está na página de login ou principal
     if (window.location.pathname.includes('login.html')) {
         handleLogin();
-    } else {
+        console.log("Carregando página de login, configurando handleLogin.");
+    } else if (window.location.pathname.includes('index.html') && listaCompleta) {
+        mostrarProdutos(); // Carrega a lista apenas se for index.html e o elemento existir
         checkLogin();
+        console.log("Carregando página index, verificando login e exibindo lista.");
+    } else if (window.location.pathname.includes('selection.html')) {
+        console.log("Carregando página de seleção, sem lista de produtos.");
+    }
+
+    // Adiciona o evento de clique ao botão Apagar Lista, apenas se existir
+    if (botaoApagarTudo) {
+        botaoApagarTudo.addEventListener('click', apagarTudo);
+    } else {
+        console.error("Elemento .apagarLista não encontrado no DOM.");
     }
 });
-
-// Adiciona os eventos de clique aos botões.
-botaoApagarTudo.addEventListener('click', apagarTudo);
