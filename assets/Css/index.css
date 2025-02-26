@@ -392,7 +392,7 @@ body:not(.light-theme) #theme-icon {
 
     .prod {
         font-size: 20px;
-        padding: 10px;
+        padding: 12px;
     }
 
     button, .select-items-btn {
@@ -402,24 +402,24 @@ body:not(.light-theme) #theme-icon {
     }
 
     .apagarLista {
-        max-width: 130px;
+        max-width: 140px;
     }
 
     .total {
-        font-size: 15px;
+        font-size: 20px;
         padding: 8px 10px;
     }
 
     .tot {
-        font-size: 15px;
+        font-size: 18px;
     }
 
     .select-items-message {
-        font-size: 12px;
+        font-size: 16px;
     }
 
     #theme-icon, .prod i, button i, .select-items-btn i {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .fixed-theme-toggle {
