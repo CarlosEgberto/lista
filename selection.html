@@ -16,6 +16,12 @@
             <h1><i class="fas fa-list"></i> Selecione os Itens para a Lista de Compras</h1>
         </header>
         <div id="categories-container"></div>
+        <div class="custom-product-container">
+            <input type="text" id="custom-product" placeholder="Digite um produto personalizado" required>
+            <button class="add-custom-btn" onclick="addCustomProduct()">
+                <i class="fas fa-plus"></i> Adicionar Produto
+            </button>
+        </div>
     </div>
     <button class="add-prod fixed-add-btn" onclick="submitSelection()">
         <i class="fas fa-plus"></i> Adicionar à Lista
@@ -45,6 +51,36 @@
             });
         }
 
+        // Função para adicionar um produto personalizado
+        function addCustomProduct() {
+            const customProductInput = document.getElementById('custom-product');
+            const customProduct = customProductInput.value.trim();
+
+            if (customProduct) {
+                // Adiciona o produto personalizado à lista de itens selecionados
+                const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+                if (!selectedItems.includes(customProduct)) {
+                    selectedItems.push(customProduct);
+                    localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+                    exibirMensagem('Produto personalizado adicionado com sucesso!', 'sucesso');
+                    customProductInput.value = ''; // Limpa o campo após adicionar
+                } else {
+                    exibirMensagem('Este produto já foi adicionado!', 'erro');
+                }
+            } else {
+                exibirMensagem('Digite um produto válido!', 'erro');
+            }
+        }
+
+        // Função para exibir mensagens de feedback (reutilizando do script.js)
+        function exibirMensagem(mensagem, tipo) {
+            const divMensagens = document.createElement('div');
+            divMensagens.id = 'mensagens';
+            divMensagens.innerHTML = `<div class="${tipo}">${mensagem}</div>`;
+            document.body.appendChild(divMensagens);
+            setTimeout(() => divMensagens.remove(), 3000); // Remove a mensagem após 3 segundos
+        }
+
         // Chama a função ao carregar a página
         window.addEventListener('load', generateCategories);
 
@@ -55,6 +91,10 @@
             checkboxes.forEach(checkbox => {
                 selectedItems.push(checkbox.value);
             });
+
+            // Adiciona qualquer produto personalizado já salvo no localStorage
+            const storedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+            selectedItems.push(...storedItems.filter(item => !selectedItems.includes(item)));
 
             localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
             window.location.href = 'index.html';

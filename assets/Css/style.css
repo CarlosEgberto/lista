@@ -535,6 +535,83 @@ body:not(.light-theme) #login-form button i {
     border-left: 4px solid #dc3545;
 }
 
+
+/* Estilos para o contêiner de produto personalizado */
+.custom-product-container {
+    margin: 10px 0px 50px 0px;
+    padding: 10px;
+    background-color: var(--cor-cinza-claro);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o input e o botão */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .custom-product-container {
+    background-color: var(--cor-branca);
+    border: 1px solid var(--cor-cinza-escuro);
+}
+
+/* Estilos para o input de produto personalizado */
+#custom-product {
+    flex: 1; /* Ocupa o espaço disponível */
+    padding: 10px;
+    border: 1px solid var(--cor-cinza-escuro);
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: var(--cor-branca);
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme #custom-product {
+    border-color: var(--cor-cinza-escuro);
+    color: var(--cor-clara-texto);
+}
+
+#custom-product:focus {
+    border-color: var(--cor-clara-botao); /* Verde claro para destaque ao focar */
+    outline: none;
+}
+
+/* Estilos para o botão de adicionar produto personalizado */
+.add-custom-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-branca);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+body.light-theme .add-custom-btn {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
+}
+
+.add-custom-btn:hover {
+    opacity: 0.9;
+}
+
+.add-custom-btn i {
+    margin-right: 8px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .add-custom-btn i {
+    color: var(--cor-clara-texto);
+}
+
+body:not(.light-theme) .add-custom-btn i {
+    color: var(--cor-branca);
+}
+
 /* Estilos responsivos */
 @media (max-width: 520px) {
     .conteiner, .login-container {
