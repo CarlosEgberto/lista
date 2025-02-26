@@ -1,0 +1,272 @@
+/* Estilos gerais para todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Variáveis de cores (temas claro e escuro) */
+:root {
+    --cor-escura: #1A1A1A;
+    --cor-cinza-escuro: #333333;
+    --cor-cinza-claro: #F5F5F5;
+    --cor-branca: #FFFFFF;
+    --cor-vermelha: #FF4444;
+    --cor-clara-fundo: #F0F0F0;
+    --cor-clara-texto: #333333;
+    --cor-clara-botao: #90EE90;
+}
+
+/* Estilos para o corpo da página (padrão: tema escuro) */
+body {
+    background-color: var(--cor-escura);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 15px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme {
+    background-color: var(--cor-clara-fundo);
+}
+
+/* Estilos para o contêiner principal */
+.conteiner {
+    background-color: var(--cor-cinza-escuro);
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-theme .conteiner {
+    background-color: var(--cor-branca);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para o cabeçalho */
+.app-header {
+    background-color: var(--cor-cinza-escuro);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--cor-cinza-claro);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .app-header {
+    background-color: var(--cor-branca);
+    border-bottom: 1px solid var(--cor-cinza-escuro);
+}
+
+.app-header h1 {
+    font-size: 24px;
+    color: var(--cor-branca);
+    text-align: center;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .app-header h1 {
+    color: var(--cor-clara-texto);
+}
+
+/* Estilos para categorias e itens */
+.category {
+    margin-bottom: 20px;
+}
+
+.category h2 {
+    font-size: 18px;
+    color: var(--cor-branca);
+    padding: 10px;
+    background-color: var(--cor-cinza-escuro);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .category h2 {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
+}
+
+.item {
+    background-color: var(--cor-cinza-claro);
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: var(--cor-escura);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .item {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
+}
+
+.item input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: border-color 0.3s ease;
+}
+
+body.light-theme .item input[type="checkbox"] {
+    border-color: var(--cor-clara-texto);
+}
+
+/* Estilos para o contêiner de produto personalizado */
+.custom-product-container {
+    margin: 10px 0 20px 0;
+    padding: 10px;
+    background-color: var(--cor-cinza-claro);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .custom-product-container {
+    background-color: var(--cor-branca);
+    border: 1px solid var(--cor-cinza-escuro);
+}
+
+#custom-product {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--cor-cinza-escuro);
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: var(--cor-branca);
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme #custom-product {
+    border-color: var(--cor-cinza-escuro);
+    color: var(--cor-clara-texto);
+}
+
+#custom-product:focus {
+    border-color: var(--cor-clara-botao);
+    outline: none;
+}
+
+.add-custom-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-branca);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+body.light-theme .add-custom-btn {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
+}
+
+.add-custom-btn:hover {
+    opacity: 0.9;
+}
+
+.add-custom-btn i {
+    margin-right: 8px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .add-custom-btn i {
+    color: var(--cor-clara-texto);
+}
+
+body:not(.light-theme) .add-custom-btn i {
+    color: var(--cor-branca);
+}
+
+/* Estilos para o botão fixo "Adicionar à Lista" */
+.fixed-add-btn {
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    padding: 10px;
+    background-color: #dbdbdb;
+    border: solid var(--cor-cinza-escuro);
+    border-radius: 10px 10px 5px 5px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Estilos para mensagens de feedback */
+#mensagens {
+    margin-top: 15px;
+    padding: 10px;
+}
+
+#mensagens div {
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.sucesso {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.erro {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+/* Estilos responsivos */
+@media (max-width: 520px) {
+    .conteiner {
+        max-width: 90%;
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    .app-header h1 {
+        font-size: 20px;
+    }
+
+    .item {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .category h2 {
+        font-size: 12px;
+    }
+
+    .fixed-add-btn {
+        font-size: 14px;
+        padding: 10px;
+        width: 160px;
+    }
+}

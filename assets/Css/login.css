@@ -1,0 +1,210 @@
+/* Estilos gerais para todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Variáveis de cores (temas claro e escuro) */
+:root {
+    --cor-escura: #1A1A1A;
+    --cor-cinza-escuro: #333333;
+    --cor-cinza-claro: #F5F5F5;
+    --cor-branca: #FFFFFF;
+    --cor-vermelha: #FF4444;
+    --cor-clara-fundo: #F0F0F0;
+    --cor-clara-texto: #333333;
+    --cor-clara-botao: #90EE90;
+}
+
+/* Estilos para o corpo da página (padrão: tema escuro) */
+body {
+    background-color: var(--cor-escura);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 15px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme {
+    background-color: var(--cor-clara-fundo);
+}
+
+/* Estilos para o contêiner de login */
+.login-container {
+    background-color: var(--cor-cinza-escuro);
+    width: 100%;
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 20px;
+    color: var(--cor-branca);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-theme .login-container {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .login-container h2 {
+    color: var(--cor-clara-texto);
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-form input {
+    width: 100%;
+    max-width: 250px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid var(--cor-cinza-claro);
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: var(--cor-branca);
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme #login-form input {
+    border-color: var(--cor-cinza-escuro);
+    color: var(--cor-clara-texto);
+}
+
+#login-form input:focus {
+    border-color: var(--cor-clara-botao);
+    outline: none;
+}
+
+#login-form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+    padding: 12px;
+    margin: 20px 0 10px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--cor-branca);
+    background-color: var(--cor-cinza-escuro);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme #login-form button {
+    color: var(--cor-clara-texto);
+    background-color: var(--cor-branca);
+}
+
+#login-form button:hover {
+    opacity: 0.9;
+}
+
+#login-form button i {
+    margin-right: 8px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme #login-form button i {
+    color: var(--cor-clara-texto);
+}
+
+body:not(.light-theme) #login-form button i {
+    color: var(--cor-branca);
+}
+
+/* Estilos para o toggle de tema fixo */
+.fixed-theme-toggle {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 15px;
+    background-color: var(--cor-cinza-claro);
+    color: var(--cor-escura);
+    border-radius: 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme .fixed-theme-toggle {
+    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-branca);
+}
+
+.fixed-theme-toggle:hover {
+    opacity: 0.8;
+}
+
+#theme-icon {
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme #theme-icon {
+    color: var(--cor-branca);
+}
+
+body:not(.light-theme) #theme-icon {
+    color: var(--cor-escura);
+}
+
+/* Estilos responsivos */
+@media (max-width: 520px) {
+    .login-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .login-container h2 {
+        font-size: 20px;
+    }
+
+    #login-form input {
+        max-width: 200px;
+        padding: 10px;
+    }
+
+    #login-form button {
+        font-size: 14px;
+        padding: 10px;
+        max-width: 180px;
+    }
+
+    #theme-icon {
+        font-size: 16px;
+    }
+
+    .fixed-theme-toggle {
+        width: 160px;
+    }
+}
