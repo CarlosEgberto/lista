@@ -39,7 +39,7 @@ body.light-theme {
 .conteiner {
     background-color: var(--cor-cinza-escuro);
     width: 100%;
-    max-width: 400px;
+    max-width: 510px;
     height: auto;
     padding: 20px;
     border-radius: 15px;
@@ -106,7 +106,7 @@ body.light-theme .category h2 {
     border-radius: 10px;
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size: 2rem;
     color: var(--cor-escura);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -119,7 +119,7 @@ body.light-theme .item {
 .item input[type="checkbox"] {
     margin-right: 10px;
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.8);
     transition: border-color 0.3s ease;
 }
 
@@ -246,7 +246,7 @@ body:not(.light-theme) .add-custom-btn i {
 /* Estilos responsivos */
 @media (max-width: 520px) {
     .conteiner {
-        max-width: 90%;
+        max-width: 100%;
         margin: 10px 0;
         padding: 15px;
     }
@@ -256,7 +256,7 @@ body:not(.light-theme) .add-custom-btn i {
     }
 
     .item {
-        font-size: 18px;
+        font-size: 2rem;
         padding: 10px;
     }
 

@@ -39,7 +39,7 @@ body.light-theme {
 .conteiner {
     background-color: var(--cor-cinza-escuro);
     width: 100%;
-    max-width: 400px;
+    max-width: 510px;
     height: auto;
     padding: 20px;
     border-radius: 15px;
@@ -68,7 +68,7 @@ body.light-theme .app-header {
 }
 
 .app-header h1 {
-    font-size: 24px;
+    font-size: 2rem;
     color: var(--cor-branca);
     text-align: center;
     font-weight: 600;
@@ -89,7 +89,7 @@ body.light-theme .app-header h1 {
 
 .user-header p {
     color: var(--cor-branca);
-    font-size: 16px;
+    font-size: 1.6rem;
     margin-bottom: 10px;
     transition: color 0.3s ease;
 }
@@ -116,7 +116,7 @@ body.light-theme .user-header .sair {
 }
 
 .user-header .sair i {
-    color: var(--cor-branca);
+    color: var(--cor-vermelha);
 }
 
 .user-header .sair:hover {
@@ -138,7 +138,7 @@ body.light-theme .user-header .sair {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 16px;
+    font-size: 2rem;
     color: var(--cor-escura);
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
@@ -170,7 +170,7 @@ body.light-theme .comprado {
 }
 
 .prod i {
-    font-size: 20px;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -387,15 +387,15 @@ body:not(.light-theme) #theme-icon {
     }
 
     .app-header h1 {
-        font-size: 24px;
+        font-size: 2rem;
     }
 
     .user-header p {
-        font-size: 18px;
+        font-size: 1.6rem;
     }
 
     .prod {
-        font-size: 20px;
+        font-size: 2rem;
         padding: 12px;
     }
 
@@ -406,7 +406,7 @@ body:not(.light-theme) #theme-icon {
     }
 
     .apagarLista {
-        max-width: 140px;
+        max-width: 165px;
     }
 
     .total {
@@ -423,7 +423,7 @@ body:not(.light-theme) #theme-icon {
     }
 
     #theme-icon, .prod i, button i, .select-items-btn i {
-        font-size: 18px;
+        font-size: 1.5rem;
     }
 
     .fixed-theme-toggle {
