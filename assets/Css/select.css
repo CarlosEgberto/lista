@@ -57,8 +57,8 @@ body.light-theme .conteiner {
 /* Estilos para o cabeçalho */
 .app-header {
     background-color: var(--cor-cinza-escuro);
-    padding: 15px 0;
     border-bottom: 1px solid var(--cor-cinza-claro);
+    padding: 15px 0px 25px 0px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -89,7 +89,6 @@ body.light-theme .app-header h1 {
     color: var(--cor-branca);
     padding: 10px;
     background-color: var(--cor-cinza-escuro);
-    border-radius: 10px;
     margin-bottom: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -261,12 +260,15 @@ body:not(.light-theme) .add-custom-btn i {
     }
 
     .category h2 {
-        font-size: 20px;
+        font-size: 1.8rem;
+        text-align: center;
+        padding: 3px;
+        border-bottom: 2px solid var(--cor-cinza-escuro);
     }
 
     .fixed-add-btn {
         font-size: 14px;
         padding: 10px;
-        width: 85%;
+        width: 95%;
     }
 }
