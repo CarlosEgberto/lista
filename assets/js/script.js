@@ -88,10 +88,19 @@ function atualizarTotal() {
 
 // Função para apagar toda a lista de compras.
 function apagarTudo() {
-    localStorage.removeItem('listaDeCompras');
-    minhaLista = [];
-    mostrarProdutos();
-    exibirMensagem('Lista apagada com sucesso!', 'sucesso');
+    // Exibe um alerta de confirmação
+    const confirmacao = confirm('Tem certeza que deseja apagar toda a lista? Esta ação não pode ser desfeita.');
+
+    // Se o usuário confirmar, apaga a lista
+    if (confirmacao) {
+        localStorage.removeItem('listaDeCompras');
+        minhaLista = [];
+        mostrarProdutos();
+        exibirMensagem('Lista apagada com sucesso!', 'sucesso');
+    } else {
+        // Se o usuário cancelar, exibe uma mensagem (opcional)
+        exibirMensagem('A lista não foi apagada.', 'info');
+    }
 }
 
 // Função para verificar o login e redirecionar se necessário
