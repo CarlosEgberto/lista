@@ -272,3 +272,99 @@ body:not(.light-theme) .add-custom-btn i {
         width: 95%;
     }
 }
+
+/* Estilos para o contêiner de pesquisa */
+.search-container {
+    margin: 10px 0 20px 0;
+    padding: 10px;
+    background-color: var(--cor-cinza-claro);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.light-theme .search-container {
+    background-color: var(--cor-branca);
+    border: 1px solid var(--cor-cinza-escuro);
+}
+
+/* Estilos para o campo de pesquisa */
+#search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--cor-cinza-escuro);
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: var(--cor-branca);
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme #search-input {
+    border-color: var(--cor-cinza-escuro);
+    color: var(--cor-clara-texto);
+}
+
+#search-input:focus {
+    border-color: var(--cor-clara-botao);
+    outline: none;
+}
+
+/* Estilos para o botão de pesquisa */
+.search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-branca);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+body.light-theme .search-btn {
+    background-color: var(--cor-branca);
+    color: var(--cor-clara-texto);
+}
+
+.search-btn:hover {
+    opacity: 0.9;
+}
+
+.search-btn i {
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+body.light-theme .search-btn i {
+    color: var(--cor-clara-texto);
+}
+
+body:not(.light-theme) .search-btn i {
+    color: var(--cor-branca);
+}
+
+/* Estilos responsivos para o campo de pesquisa */
+@media (max-width: 520px) {
+    .search-container {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    #search-input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .search-btn {
+        padding: 8px 12px;
+    }
+
+    .search-btn i {
+        font-size: 16px;
+    }
+}
