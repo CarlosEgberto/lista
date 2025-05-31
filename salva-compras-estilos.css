@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -19,6 +20,8 @@
     --cor-vermelha-aviso: #FF4444;
     --cor-verde-sucesso: #28A745;
     --cor-icone-inativo: #7A8B99;
+    --cor-item-comprado-fundo: #e9ecef;
+    --cor-item-comprado-texto: #6c757d;
 }
 
 body {
@@ -30,192 +33,293 @@ body {
 }
 
 .app-container {
-    width: 100%;
-    max-width: 500px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    width: 100%; max-width: 500px; min-height: 100vh;
+    display: flex; flex-direction: column;
     background-color: var(--cor-fundo-elementos);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    position: relative; /* Para posicionamento de FABs internos */
+    position: relative; 
 }
 
 .app-header {
     background-color: var(--cor-primaria-azul-moderno);
     color: var(--cor-texto-sobre-fundo-escuro);
-    padding: 15px 20px;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    max-width: 500px;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
+    padding: 15px 20px; text-align: center; position: fixed;
+    width: 100%; max-width: 500px; top: 0; left: 50%;
+    transform: translateX(-50%); z-index: 100;
 }
-
-.app-header h1 {
-    font-size: 1.5em;
-    margin: 0;
-}
+.app-header h1 { font-size: 1.5em; margin: 0; }
 
 .app-content {
-    flex-grow: 1;
-    padding: 20px;
-    padding-top: 70px; /* Ajustado para altura do header */
-    padding-bottom: 75px; /* Ajustado para altura da nav */
+    flex-grow: 1; padding: 20px;
+    padding-top: 70px; padding-bottom: 75px; 
     overflow-y: auto;
 }
 
-/* Estilos para as Views */
-#view-minhas-listas h2,
-#view-adicionar-produto h2,
-#view-resumo-compra h2,
-#view-configuracoes h2,
-#view-lista-especifica h2 {
-    color: var(--cor-primaria-azul-moderno);
-    margin-bottom: 20px;
+#view-minhas-listas h2, #view-adicionar-produto h2, #view-resumo-compra h2,
+#view-configuracoes h2, #view-lista-especifica h2 {
+    color: var(--cor-primaria-azul-moderno); margin-bottom: 20px; font-size: 1.6em;
 }
 
-/* Estilos para a Tela Minhas Listas */
 .listas-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px;
 }
-
 .cartao-lista {
-    background-color: var(--cor-fundo-elementos);
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--cor-fundo-elementos); border-radius: 8px; padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
     border-left: 5px solid var(--cor-secundaria-azul-claro);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    cursor: pointer; /* Indica que o cartão é clicável */
+    cursor: pointer; display: flex; flex-direction: column;
+    justify-content: space-between; min-height: 120px;
 }
+.cartao-lista:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.12); }
+.cartao-lista h3 { font-size: 1.1em; color: var(--cor-primaria-azul-moderno); margin-bottom: 8px; pointer-events: none; }
+.cartao-lista p { font-size: 0.9em; color: var(--cor-texto-sobre-fundo-claro); margin-bottom: 15px; pointer-events: none; flex-grow: 1; }
+.cartao-lista-acoes { display: flex; justify-content: flex-end; gap: 10px; }
+.cartao-lista-acoes button { background: transparent; border: none; color: var(--cor-icone-inativo); font-size: 1.1em; cursor: pointer; padding: 5px; }
+.cartao-lista-acoes button:hover { color: var(--cor-primaria-azul-moderno); }
+.cartao-lista-acoes button .fa-trash:hover { color: var(--cor-vermelha-aviso); }
 
-.cartao-lista:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.cartao-lista h3 {
-    font-size: 1.1em;
-    color: var(--cor-primaria-azul-moderno);
-    margin-bottom: 8px;
-    pointer-events: none; /* Para o clique no h3 não interferir no clique do card */
-}
-
-.cartao-lista p {
-    font-size: 0.9em;
-    color: var(--cor-texto-sobre-fundo-claro);
-    margin-bottom: 15px;
-    pointer-events: none;
-}
-
-.cartao-lista-acoes {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: auto; /* Empurra para o final do card se o card for flex column */
-}
-
-.cartao-lista-acoes button {
-    background-color: transparent;
-    border: none;
-    color: var(--cor-icone-inativo);
-    font-size: 1.1em;
-    cursor: pointer;
-    padding: 5px;
-}
-
-.cartao-lista-acoes button:hover {
-    color: var(--cor-primaria-azul-moderno);
-}
-
-.cartao-lista-acoes button .fa-trash:hover {
-    color: var(--cor-vermelha-aviso);
-}
-
-/* Botão Flutuante de Ação (FAB) */
 .fab {
-    background-color: var(--cor-destaque-azul-brilhante);
-    color: var(--cor-texto-sobre-fundo-escuro);
-    border: none;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    cursor: pointer;
-    position: absolute; /* Posicionado em relação ao app-container ou view específica */
-    bottom: 75px; 
-    right: 20px;
-    z-index: 90;
+    background-color: var(--cor-destaque-azul-brilhante); color: var(--cor-texto-sobre-fundo-escuro);
+    border: none; border-radius: 50%; width: 56px; height: 56px; font-size: 24px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25); cursor: pointer; position: absolute; 
+    bottom: 20px; right: 20px; z-index: 90; 
+    transition: transform 0.2s ease;
+}
+.fab:hover { transform: scale(1.05); }
+
+.fab-secondary { 
+    background-color: var(--cor-verde-sucesso); color: var(--cor-texto-sobre-fundo-escuro);
+    padding: 10px 18px; border: none; border-radius: 25px; font-size: 1em; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer;
+    margin: 20px auto 0 auto; transition: background-color 0.2s ease;
+}
+.fab-secondary:hover { background-color: #218838; }
+.fab-secondary i { margin-right: 8px; }
+
+.item-da-lista {
+    display: flex; align-items: center; padding: 10px; margin-bottom: 8px;
+    background-color: var(--cor-fundo-elementos);
+    border: 1px solid var(--cor-borda-sutil); border-radius: 6px;
+    transition: background-color 0.3s ease, opacity 0.3s ease; 
+}
+.item-da-lista .item-checkbox-comprado { 
+    margin-right: 12px; transform: scale(1.3); cursor: pointer;
+    accent-color: var(--cor-primaria-azul-moderno); 
+}
+.item-da-lista .item-info-container { flex-grow: 1; cursor: pointer; display: flex; flex-direction: column; }
+.item-da-lista .item-info-container .item-nome { font-size: 1em; display: block; transition: text-decoration 0.3s ease, color 0.3s ease; }
+.item-da-lista .item-info-container .item-preco-unitario { font-size: 0.85em; color: var(--cor-icone-inativo); transition: color 0.3s ease; }
+.item-da-lista.comprado { background-color: var(--cor-item-comprado-fundo); opacity: 0.7; }
+.item-da-lista.comprado .item-info-container .item-nome { text-decoration: line-through; color: var(--cor-item-comprado-texto); }
+.item-da-lista.comprado .item-info-container .item-preco-unitario { color: var(--cor-item-comprado-texto); }
+.item-da-lista.comprado .item-preco-total { text-decoration: line-through; color: var(--cor-item-comprado-texto); }
+.item-da-lista .item-quantidade-controles-inline { display: flex; align-items: center; margin: 0 10px; }
+.item-da-lista .btn-qtd-inline {
+    background-color: var(--cor-fundo-elementos); border: 1px solid var(--cor-secundaria-azul-claro);
+    color: var(--cor-primaria-azul-moderno); width: 28px; height: 28px; border-radius: 50%;
+    font-size: 1.1em; font-weight: bold; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.item-da-lista .btn-qtd-inline:hover { background-color: var(--cor-secundaria-azul-claro); color: var(--cor-texto-sobre-fundo-escuro); }
+.item-da-lista .qtd-inline-display { padding: 0 8px; font-size: 1em; font-weight: 500; min-width: 20px; text-align: center; }
+.item-da-lista .item-preco-total { 
+    font-weight: 500; color: var(--cor-primaria-azul-moderno);
+    margin-left: auto; padding-left: 10px; min-width: 70px; text-align: right;
+    transition: text-decoration 0.3s ease, color 0.3s ease;
+}
+.item-da-lista .item-acao-editar-preco { 
+    background: none; border: none; color: var(--cor-icone-inativo);
+    cursor: pointer; margin-left: 10px; font-size: 1.1em; padding: 5px;
+}
+.item-da-lista .item-acao-editar-preco:hover { color: var(--cor-primaria-azul-moderno); }
+
+#view-lista-especifica .total-parcial-lista { 
+    margin-top: 20px; padding-top: 10px; border-top: 1px dashed var(--cor-borda-sutil);
+    font-weight: bold; font-size: 1.2em; text-align: right; color: var(--cor-primaria-azul-moderno);
 }
 
-.fab-secondary { /* Para outros botões de ação no estilo FAB */
-    background-color: var(--cor-verde-sucesso);
-    color: var(--cor-texto-sobre-fundo-escuro);
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    font-size: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    cursor: pointer;
-    margin-top: 20px;
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000; padding: 15px;
 }
-.fab-secondary i {
-    margin-right: 8px;
+.modal-content {
+    background-color: var(--cor-fundo-elementos); padding: 25px; border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); width: 100%; max-width: 400px; 
+    color: var(--cor-texto-sobre-fundo-claro);
+}
+.modal-content h3 { color: var(--cor-primaria-azul-moderno); margin-top: 0; margin-bottom: 20px; text-align: center; font-size: 1.4em; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; margin-bottom: 6px; font-weight: 500; font-size: 0.95em;}
+#item-nome-display {
+    width: 100%; padding: 10px; font-size: 1em; border-radius: 6px; 
+    background-color: var(--cor-fundo-elementos); color: var(--cor-texto-sobre-fundo-claro);
+    text-align: left; font-weight: normal; border: 1px solid var(--cor-borda-sutil); 
+}
+#item-nome-display:focus:not(:read-only) {
+    border-color: var(--cor-primaria-azul-moderno); outline: none; box-shadow: 0 0 0 2px rgba(32, 58, 76, 0.2);
+}
+#item-nome-display:read-only {
+    text-align: center; font-weight: 600; font-size: 1.1em; 
+    color: var(--cor-primaria-azul-moderno); background-color: var(--cor-fundo-principal); 
+    border: 1px dashed var(--cor-borda-sutil); cursor: default; box-shadow: none; 
+}
+#item-modal #item-quantidade { display: none; } 
+.form-group input[type="number"]#item-preco {
+    width: 100%; padding: 10px; border: 1px solid var(--cor-borda-sutil);
+    border-radius: 6px; font-size: 1em;
+    background-color: var(--cor-fundo-elementos); color: var(--cor-texto-sobre-fundo-claro);  
+}
+.form-group input[type="number"]#item-preco:focus {
+    border-color: var(--cor-primaria-azul-moderno); outline: none; box-shadow: 0 0 0 2px rgba(32, 58, 76, 0.2); 
+}
+.modal-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 25px; }
+.modal-actions button {
+    padding: 10px 15px; border-radius: 6px; border: none;
+    font-weight: 500; cursor: pointer; transition: background-color 0.2s ease;
+    flex-grow: 1; 
+}
+.modal-actions .btn-remover-modal {
+    background-color: var(--cor-vermelha-aviso); color: var(--cor-texto-sobre-fundo-escuro);
+    margin-right: auto; flex-grow: 0.5; 
+}
+.modal-actions .btn-remover-modal:hover { background-color: #c82333; }
+.modal-actions #cancel-item-btn { background-color: var(--cor-borda-sutil); color: var(--cor-texto-sobre-fundo-claro); }
+.modal-actions #cancel-item-btn:hover { background-color: #c8cfd3; }
+.modal-actions #save-item-btn { background-color: var(--cor-destaque-azul-brilhante); color: var(--cor-texto-sobre-fundo-escuro); }
+.modal-actions #save-item-btn:hover { background-color: #0056b3; }
+
+.filtros-catalogo { margin-bottom: 20px; background-color: transparent; }
+#catalogo-search-input {
+    width: 100%; padding: 12px; border: 1px solid var(--cor-borda-sutil);
+    border-radius: 6px; font-size: 1em; margin-bottom: 15px;
+}
+#catalogo-search-input:focus {
+    border-color: var(--cor-primaria-azul-moderno); outline: none; box-shadow: 0 0 0 2px rgba(32, 58, 76, 0.2);
+}
+.abas-categorias-scroll-container {
+    overflow-x: auto; white-space: nowrap; padding-bottom: 10px; 
+    margin-bottom: 20px; -webkit-overflow-scrolling: touch;
+}
+.abas-categorias-scroll-container::-webkit-scrollbar { display: none; }
+.abas-categorias-scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
+.categorias-abas-container { display: inline-flex; gap: 10px; }
+.aba-categoria {
+    background-color: var(--cor-fundo-elementos); color: var(--cor-primaria-azul-moderno);
+    border: 1px solid var(--cor-borda-sutil); padding: 8px 18px; 
+    border-radius: 20px; font-size: 0.95em; font-weight: 500;
+    cursor: pointer; transition: all 0.2s ease; white-space: nowrap; 
+}
+.aba-categoria:hover { border-color: var(--cor-secundaria-azul-claro); background-color: #e9f6f8; }
+.aba-categoria.active {
+    background-color: var(--cor-primaria-azul-moderno); color: var(--cor-texto-sobre-fundo-escuro);
+    border-color: var(--cor-primaria-azul-moderno); font-weight: 600;
+}
+.catalogo-produtos-lista {}
+.produto-catalogo-item-linha {
+    display: flex; align-items: center; background-color: var(--cor-fundo-elementos);
+    border-radius: 8px; padding: 12px; margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid var(--cor-borda-sutil);
+    cursor: pointer; transition: box-shadow 0.2s ease;
+}
+.produto-catalogo-item-linha:hover { box-shadow: 0 3px 7px rgba(0,0,0,0.1); }
+.produto-catalogo-imagem-placeholder {
+    width: 60px; height: 60px; background-color: var(--cor-borda-sutil);
+    border-radius: 6px; margin-right: 12px; display: flex;
+    align-items: center; justify-content: center; color: var(--cor-icone-inativo);
+    font-size: 1.8em; flex-shrink: 0; 
+}
+.produto-catalogo-info { flex-grow: 1; min-width: 0; }
+.produto-catalogo-info h4 {
+    font-size: 1em; color: var(--cor-texto-sobre-fundo-claro); font-weight: 500;
+    margin: 0 0 4px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.produto-catalogo-acoes { display: flex; align-items: center; margin-left: 10px; }
+.produto-catalogo-acoes .btn-qtd {
+    background-color: var(--cor-fundo-elementos); border: 1px solid var(--cor-secundaria-azul-claro);
+    color: var(--cor-primaria-azul-moderno); width: 28px; height: 28px;
+    border-radius: 50%; font-size: 1.1em; font-weight: bold; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.produto-catalogo-acoes .btn-qtd:hover { background-color: var(--cor-secundaria-azul-claro); color: var(--cor-texto-sobre-fundo-escuro); }
+.produto-catalogo-acoes .qtd-display { padding: 0 8px; font-size: 1em; font-weight: 500; min-width: 20px; text-align: center; }
+
+/* Botão Adicionar Manualmente no Catálogo */
+.btn-catalogo-add-manual {
+    background-color: var(--cor-fundo-elementos);
+    color: var(--cor-primaria-azul-moderno);
+    border: 1px dashed var(--cor-primaria-azul-moderno);
+    width: calc(100% - 40px); /* Ajusta para padding da view */
+    max-width: none; /* Permite ocupar a largura */
+    margin: 20px auto 10px auto; /* Centraliza e dá espaçamento */
+}
+.btn-catalogo-add-manual:hover {
+    background-color: #e9f6f8;
+    border-style: solid;
 }
 
+#view-resumo-compra h2 { margin-bottom: 25px; }
+#resumo-conteudo {
+    background-color: var(--cor-fundo-elementos); padding: 20px;
+    border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+#resumo-conteudo .nome-lista-resumo {
+    font-size: 1.3em; color: var(--cor-primaria-azul-moderno); font-weight: 600;
+    margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--cor-borda-sutil);
+}
+#resumo-conteudo .detalhe-resumo {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 1.1em; padding: 10px 0; border-bottom: 1px dashed var(--cor-borda-sutil); 
+}
+#resumo-conteudo .detalhe-resumo:last-child { border-bottom: none; }
+#resumo-conteudo .detalhe-resumo span:first-child { color: var(--cor-texto-sobre-fundo-claro); }
+#resumo-conteudo .detalhe-resumo span:last-child { font-weight: 600; color: var(--cor-primaria-azul-moderno); }
+#resumo-conteudo .grand-total-resumo {
+    margin-top: 20px; padding-top: 15px; border-top: 2px solid var(--cor-primaria-azul-moderno); 
+    font-size: 1.4em; font-weight: bold; color: var(--cor-destaque-azul-brilhante); 
+}
+#resumo-conteudo .mensagem-sem-lista { font-style: italic; color: var(--cor-icone-inativo); text-align: center; padding: 20px; }
 
-/* Barra de Navegação Inferior */
+#view-configuracoes h2 { margin-bottom: 25px; }
+.lista-configuracoes { list-style: none; padding: 0; margin: 0; }
+.item-configuracao {
+    background-color: var(--cor-fundo-elementos); border: 1px solid var(--cor-borda-sutil);
+    border-radius: 8px; padding: 15px 20px; margin-bottom: 10px;
+    display: flex; align-items: center; cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.item-configuracao:hover { background-color: #f0f4f7; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.item-configuracao .icon-config {
+    font-size: 1.2em; color: var(--cor-primaria-azul-moderno);
+    margin-right: 15px; width: 25px; text-align: center;
+}
+.item-configuracao span { flex-grow: 1; font-size: 1.05em; color: var(--cor-texto-sobre-fundo-claro); }
+.item-configuracao .arrow-config { font-size: 0.9em; color: var(--cor-icone-inativo); }
+.item-configuracao.disabled-config { cursor: default; opacity: 0.6; }
+.item-configuracao.disabled-config:hover { background-color: var(--cor-fundo-elementos); box-shadow: none; }
+#config-apagar-dados .icon-config { color: var(--cor-vermelha-aviso); }
+#config-apagar-dados:hover .icon-config { color: #d32f2f; }
+#config-apagar-dados:hover span { color: var(--cor-vermelha-aviso); }
+
 .bottom-nav {
     background-color: var(--cor-primaria-azul-moderno);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 5px 0;
-    position: fixed;
-    width: 100%;
-    max-width: 500px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-    border-top: 1px solid var(--cor-secundaria-azul-claro);
+    display: flex; justify-content: space-around; align-items: center;
+    padding: 5px 0; position: fixed; width: 100%; max-width: 500px;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    z-index: 100; border-top: 1px solid var(--cor-secundaria-azul-claro);
 }
-
 .nav-button {
-    background-color: transparent;
-    border: none;
-    color: var(--cor-icone-inativo);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px 12px;
-    font-size: 0.75em;
-    cursor: pointer;
-    transition: color 0.2s ease;
-    flex-grow: 1; /* Para ocupar espaço igualmente */
+    background-color: transparent; border: none; color: var(--cor-icone-inativo);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 8px 12px; font-size: 0.75em; cursor: pointer;
+    transition: color 0.2s ease; flex-grow: 1; 
 }
-
-.nav-button i {
-    font-size: 1.5em;
-    margin-bottom: 4px;
-}
-
-.nav-button.active {
-    color: var(--cor-secundaria-azul-claro);
-}
-
-.nav-button:hover:not(.active) {
-    color: var(--cor-texto-sobre-fundo-escuro);
-}
+.nav-button i { font-size: 1.5em; margin-bottom: 4px; }
+.nav-button.active { color: var(--cor-secundaria-azul-claro); }
+.nav-button:hover:not(.active) { color: var(--cor-texto-sobre-fundo-escuro); }

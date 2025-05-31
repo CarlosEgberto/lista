@@ -17,51 +17,108 @@
         <main class="app-content" id="app-main-content">
             <div id="view-minhas-listas">
                 <h2>Minhas Listas</h2>
-                <div class="listas-container" id="listas-cards-container">
-                    </div>
+                <div class="listas-container" id="listas-cards-container"></div>
                 <button class="fab" id="fab-criar-lista" aria-label="Criar Nova Lista">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
 
             <div id="view-adicionar-produto" style="display: none;">
-                <h2>Adicionar Produto</h2>
-                <p>Conteúdo da tela de adicionar produto (categorias, busca, itens) virá aqui.</p>
+                <h2>Catálogo de Produtos</h2>
+                <div class="filtros-catalogo">
+                    <input type="text" id="catalogo-search-input" placeholder="Pesquisar no catálogo...">
+                    <div class="abas-categorias-scroll-container">
+                        <div class="categorias-abas-container" id="catalogo-categorias-abas"></div>
+                    </div>
+                </div>
+                <div class="catalogo-produtos-lista" id="catalogo-produtos-lista-container">
+                    <p>Carregando produtos do catálogo...</p> 
+                </div>
+                <button class="fab-secondary btn-catalogo-add-manual" id="catalogo-adicionar-item-manual-btn">
+                    <i class="fas fa-pen"></i> Não encontrou? Adicionar manualmente
+                </button>
             </div>
 
             <div id="view-resumo-compra" style="display: none;">
                 <h2>Resumo da Compra</h2>
-                <p>Total e resumo por categorias virão aqui.</p>
+                <div id="resumo-conteudo">
+                    <p class="mensagem-sem-lista">Nenhuma lista selecionada para exibir o resumo.</p>
+                </div>
             </div>
 
             <div id="view-configuracoes" style="display: none;">
-                <h2>Configurações</h2>
-                <p>Opções e ajustes do aplicativo virão aqui.</p>
+                <h2>Ajustes</h2>
+                <ul class="lista-configuracoes">
+                    <li class="item-configuracao" id="config-apagar-dados">
+                        <i class="fas fa-trash-alt icon-config"></i>
+                        <span>Apagar Todos os Dados</span>
+                        <i class="fas fa-chevron-right arrow-config"></i>
+                    </li>
+                    <li class="item-configuracao" id="config-sobre-app">
+                        <i class="fas fa-info-circle icon-config"></i>
+                        <span>Sobre o Salva Compras</span>
+                        <i class="fas fa-chevron-right arrow-config"></i>
+                    </li>
+                    <li class="item-configuracao disabled-config">
+                        <i class="fas fa-palette icon-config"></i>
+                        <span>Mudar Tema (em breve)</span>
+                        <i class="fas fa-chevron-right arrow-config"></i>
+                    </li>
+                    <li class="item-configuracao disabled-config">
+                        <i class="fas fa-bell icon-config"></i>
+                        <span>Notificações (em breve)</span>
+                        <i class="fas fa-chevron-right arrow-config"></i>
+                    </li>
+                </ul>
             </div>
 
             <div id="view-lista-especifica" style="display: none;">
                 <h2 id="titulo-lista-especifica">Nome da Lista</h2>
-                <div id="itens-lista-especifica-container">
-                    </div>
-                <p>Total da lista específica: R$ <span id="total-lista-especifica">0.00</span></p>
-                 <button class="fab-secondary" id="fab-adicionar-item-lista" aria-label="Adicionar Item à Lista">
-                    <i class="fas fa-plus"></i> Adicionar Item
+                <div id="itens-lista-especifica-container"></div>
+                <p class="total-parcial-lista">Total Comprado: R$ <span id="total-lista-especifica">0.00</span></p>
+                 <button class="fab-secondary" id="fab-buscar-no-catalogo-btn" aria-label="Adicionar Itens do Catálogo"> <i class="fas fa-search"></i> Buscar Produtos no Catálogo
                 </button>
             </div>
-
         </main>
+
+        <div id="item-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-content">
+                <h3 id="modal-title">Adicionar Novo Item</h3>
+                <form id="item-form">
+                    <input type="hidden" id="modal-item-list-id">
+                    <input type="hidden" id="modal-item-index">
+
+                    <div class="form-group">
+                        <label for="item-nome-display">Nome do Produto:</label>
+                        <input type="text" id="item-nome-display" class="nome-produto-fixo-modal" readonly> 
+                    </div>
+
+                    <div class="form-group">
+                        <label for="item-preco">Preço Unitário (R$):</label>
+                        <input type="number" id="item-preco" step="0.01" value="0.00" min="0" required>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" id="remover-item-modal-btn" class="btn-remover-modal" style="display: none;">Remover da Lista</button>
+                        <button type="button" id="cancel-item-btn">Cancelar</button>
+                        <button type="submit" id="save-item-btn">Salvar</button> 
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <nav class="bottom-nav">
             <button class="nav-button active" data-view="minhas-listas" aria-label="Minhas Listas">
                 <i class="fas fa-list-alt"></i>
                 <span>Listas</span>
             </button>
-            <button class="nav-button" data-view="adicionar-produto" aria-label="Adicionar Produto">
-                <i class="fas fa-cart-plus"></i>
-                <span>Adicionar</span> </button>
+            <button class="nav-button" data-view="adicionar-produto" aria-label="Catálogo de Produtos">
+                <i class="fas fa-book-open"></i>
+                <span>Catálogo</span>
+            </button>
             <button class="nav-button" data-view="resumo-compra" aria-label="Resumo da Compra">
                 <i class="fas fa-file-invoice-dollar"></i>
-                <span>Total</span>
+                <span>Resumo</span>
             </button>
             <button class="nav-button" data-view="configuracoes" aria-label="Configurações">
                 <i class="fas fa-cog"></i>
@@ -69,7 +126,6 @@
             </button>
         </nav>
     </div>
-
     <script src="salva-compras-app.js" defer></script>
 </body>
 </html>
