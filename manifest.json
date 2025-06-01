@@ -1,8 +1,32 @@
 {
-  "name": "Lista de Compras",
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "short_name": "Lista",
-  "id": "Lista-five",
-  "description": "Uma lista de compras, fácil e simples, para que possa utilizar sem enrolação."
+  "name": "Salva Compras",
+  "short_name": "SalvaCompras",
+  "description": "Seu aplicativo para organizar e gerenciar suas listas de compras de forma fácil e eficiente.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F4F6F8",
+  "theme_color": "#203A4C",
+  "orientation": "portrait",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/favicon.svg", 
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
 }
