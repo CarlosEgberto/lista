@@ -323,3 +323,32 @@ body {
 .nav-button i { font-size: 1.5em; margin-bottom: 4px; }
 .nav-button.active { color: var(--cor-secundaria-azul-claro); }
 .nav-button:hover:not(.active) { color: var(--cor-texto-sobre-fundo-escuro); }
+
+/* Estilo para a data no card da lista */
+.cartao-lista .card-data {
+    font-size: 0.8em; /* Tamanho pequeno */
+    color: var(--cor-icone-inativo); /* Cor cinza, igual aos ícones */
+    margin-top: auto; /* Empurra a data para perto dos botões */
+    margin-bottom: 10px; /* Espaço antes dos botões */
+    pointer-events: none; /* Impede que o texto seja clicável */
+}
+
+/* Estilo para o indicador de carregamento */
+#loading-indicator {
+    display: none; /* Começa escondido */
+    padding: 40px;
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--cor-icone-inativo);
+}
+
+#loading-indicator.show {
+    display: block; /* Mostra o indicador */
+}
+/* Estilo para o botão Sair, parecido com o de apagar dados */
+#config-sair .icon-config {
+    color: var(--cor-vermelha-aviso);
+}
+#config-sair:hover span {
+    color: var(--cor-vermelha-aviso);
+}

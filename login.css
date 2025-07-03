@@ -7,7 +7,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-/* Variáveis de cores (temas claro e escuro) */
+/* Variáveis de cores */
 :root {
     --cor-escura: #1A1A1A;
     --cor-cinza-escuro: #333333;
@@ -19,7 +19,7 @@
     --cor-clara-botao: #90EE90;
 }
 
-/* Estilos para o corpo da página (padrão: tema escuro) */
+/* Estilos para o corpo da página */
 body {
     background-color: var(--cor-escura);
     min-height: 100vh;
@@ -69,13 +69,14 @@ body.light-theme .login-container h2 {
     color: var(--cor-clara-texto);
 }
 
-#login-form {
+/* Estilos gerais para os formulários */
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#login-form input {
+form input {
     width: 100%;
     max-width: 250px;
     padding: 12px;
@@ -87,17 +88,17 @@ body.light-theme .login-container h2 {
     transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-body.light-theme #login-form input {
+body.light-theme form input {
     border-color: var(--cor-cinza-escuro);
     color: var(--cor-clara-texto);
 }
 
-#login-form input:focus {
+form input:focus {
     border-color: var(--cor-clara-botao);
     outline: none;
 }
 
-#login-form button {
+form button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,66 +117,58 @@ body.light-theme #login-form input {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-body.light-theme #login-form button {
+/* Estilo para botão desabilitado */
+form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+body.light-theme form button {
     color: var(--cor-clara-texto);
     background-color: var(--cor-branca);
 }
 
-#login-form button:hover {
+form button:hover:not(:disabled) {
     opacity: 0.9;
 }
 
-#login-form button i {
+form button i {
     margin-right: 8px;
     font-size: 18px;
     transition: color 0.3s ease;
 }
 
-body.light-theme #login-form button i {
+body.light-theme form button i {
     color: var(--cor-clara-texto);
 }
 
-body:not(.light-theme) #login-form button i {
+body:not(.light-theme) form button i {
     color: var(--cor-branca);
 }
 
-/* Estilos para o toggle de tema fixo */
-.fixed-theme-toggle {
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px 15px;
-    background-color: var(--cor-cinza-claro);
-    color: var(--cor-escura);
-    border-radius: 10px;
+/* Estilos para o link que troca entre login e cadastro */
+.toggle-link {
+    margin-top: 20px;
     font-size: 14px;
-    border: none;
-    cursor: pointer;
-    z-index: 1000;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.light-theme .fixed-theme-toggle {
-    background-color: var(--cor-cinza-escuro);
-    color: var(--cor-branca);
+.toggle-link a {
+    color: var(--cor-clara-botao);
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.fixed-theme-toggle:hover {
-    opacity: 0.8;
+.toggle-link a:hover {
+    text-decoration: underline;
 }
 
-#theme-icon {
-    font-size: 20px;
-    transition: color 0.3s ease;
-}
-
-body.light-theme #theme-icon {
-    color: var(--cor-branca);
-}
-
-body:not(.light-theme) #theme-icon {
-    color: var(--cor-escura);
+/* Estilos para a mensagem de erro */
+.error-message {
+    margin-top: 15px;
+    color: var(--cor-vermelha);
+    font-weight: bold;
+    min-height: 20px; /* Garante que o layout não pule quando a msg aparece */
 }
 
 /* Estilos responsivos */
@@ -189,22 +182,14 @@ body:not(.light-theme) #theme-icon {
         font-size: 20px;
     }
 
-    #login-form input {
+    form input {
         max-width: 200px;
         padding: 10px;
     }
 
-    #login-form button {
+    form button {
         font-size: 14px;
         padding: 10px;
         max-width: 180px;
-    }
-
-    #theme-icon {
-        font-size: 16px;
-    }
-
-    .fixed-theme-toggle {
-        width: 160px;
     }
 }
