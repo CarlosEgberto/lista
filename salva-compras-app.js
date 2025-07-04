@@ -38,22 +38,32 @@ auth.onAuthStateChanged(user => {
 });
 
 async function fetchAndCacheImageUrl(productName) {
-    if (!GOOGLE_API_KEY || !SEARCH_ENGINE_ID || GOOGLE_API_KEY === "SUA_API_KEY_DO_Google Search") {
-        return null;
-    }
     const docId = removerAcentos(productName.toLowerCase()).replace(/[^a-z0-9]+/g, '-');
+    
     try {
         const doc = await productImagesCollection.doc(docId).get();
-        if (doc.exists) return doc.data().url;
-        const url = `https://www.googleapis.com/customsearch/v1?key=${GOOGLE_API_KEY}&cx=${SEARCH_ENGINE_ID}&q=${encodeURIComponent(productName)}&searchType=image&num=1&imgSize=medium`;
-        const response = await fetch(url);
-        if (!response.ok) return null;
+        if (doc.exists) {
+            return doc.data().url;
+        }
+
+        // NOVO: Chama o nosso intermediário seguro em vez da API do Google
+        const response = await fetch(`/api/search-images?q=${encodeURIComponent(productName)}`);
+        
+        if (!response.ok) {
+            console.error("Erro ao chamar nosso API de imagem.");
+            return null;
+        }
+
         const data = await response.json();
-        const imageUrl = data.items && data.items.length > 0 ? data.items[0].link : null;
-        if (imageUrl) await productImagesCollection.doc(docId).set({ url: imageUrl });
+        const imageUrl = data.imageUrl;
+        
+        if (imageUrl) {
+            await productImagesCollection.doc(docId).set({ url: imageUrl });
+        }
         return imageUrl;
+
     } catch (error) {
-        console.error("Erro ao buscar imagem:", error);
+        console.error("Erro na função fetchAndCacheImageUrl:", error);
         return null;
     }
 }
