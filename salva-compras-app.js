@@ -5,26 +5,26 @@ function removerAcentos(texto) {
 }
 
 const shoppingListData = [
-    { category: "Açougue", icon: "fas fa-drumstick-bite", items: ["Açém", "Alcatra", "Bacon", "Calabresa", "Carne de Frango", "Carne de Porco", "Carne moída", "Carré", "Costela", "Costela Bovina", "Costela de Boi", "Costela Ovina", "Costela Suína", "Coxa", "Coxa de Frango", "Filé de Coxa", "Filé de Peito", "Filé Mignon", "Filé Mignon Suíno", "Guisado", "Lagarto bovino", "Linguiça", "Linguicinha", "Paleta de Cordeiro", "Patinho", "Peito de Frango","Pernil", "Peru", "Picanha","salsicha", "Salsichão", "Sobrecoxa"] }, 
-    { category: "Aperitivos", icon: "fas fa-cookie-bite", items: ["Amendoim", "Batata Palha", "Milho para pipoca", "Tapioca"] }, 
-    { category: "Bebidas", icon: "fas fa-wine-glass-alt", items: ["Água", "Água Mineral C/ Gás", "Achocolatado", "Cacau em pó", "Cachaça", "Café", "Cerveja", "Cerveja Preta", "Champagne", "Chá", "Chá Gelado", "Coca-Cola", "Espumante", "Fanta", "Guaraná", "Pepsi", "Refrigerante", "Sprite", "Suco", "Vinho Branco", "Vinho Rosé", "Vinho Tinto", "Vodka", "Whisky"] }, 
-    { category: "Congelados", icon: "fas fa-snowflake", items: ["Almôndega", "Batatas pré-fritas", "Batata Rosti", "Hambúrguer", "Lasanha", "Pizza Pronta", "Sorvete"] }, 
-    { category: "Doces", icon: "fas fa-candy-cane", items: ["Balas", "Chicletes", "Chocolates", "Doce de Amendoim", "Doce de Leite", "BomBom", "Paçoca", "Pastilhas"] }, 
-    { category: "Enlatados", icon: "fas fa-archive", items: ["Atum em lata","Azeitona", "Cogumelo", "Creme de Leite", "Ervilha em Lata", "Leite Condensado", "Milho em Lata", "Salsicha em Lata", "Sardinhas"] }, 
-    { category: "Frutas", icon: "fas fa-apple-alt", items: ["Abacate", "Banana", "Jambo", "Kiwi", "Laranja", "Limão", "Maçã", "Mamão", "Manga", "Melancia", "Melão", "Morango", "Pera", "Tangerina", "Uva"] }, 
-    { category: "Higiene", icon: "fas fa-pump-soap", items: ["Absorvente", "Acetona", "Algodão", "Bronzeador", "Condicionador", "Cotonete", "Creme Dental", "Desodorante rollon", "Creme p/ o Rosto", "Desodorante Spray", "Enxaguante Bucal", "Escova Dental", "Fio Dental", "Papel Higienico", "Pasta de dentes", "Prestobarba", "Protetor Solar", "Sabonete", "Shampoo", "Talco p/ Pé"] }, 
-    { category: "Lanche", icon: "fas fa-hamburger", items: ["Biscoito", "Bolos", "Capuchino", "Cereais", "Doces e compotas", "Doces pastosos", "Geleias", "Massa de pastel", "Mel"] }, 
-    { category: "Laticínios ou Ovos", icon: "fas fa-cheese", items: ["Danone", "Embutidos", "Iogurte", "Leite integral", "Leite Desnatado","Leite de Coco", "Leite em pó", "Manteiga", "Margarina", "Ovo", "Queijo", "Queijo ralado", "Requeijao", "Salame", "Yakult"] }, 
-    { category: "Legumes e Verduras", icon: "fas fa-carrot", items: ["Abóbora", "Agrião", "Aipim", "Alface", "Batata Doce", "Batata Inglesa","Beterraba", "Brócolis","Cenoura","Chuchu", "Couve", "Couve-Flor", "Jiló", "Mostarda", "Pepino", "Repolho", "Tomate", "Vagem"] }, 
-    { category: "Mercearia", icon: "fas fa-shopping-basket", items: ["Açúcar", "Adoçante", "Amido de milho", "Arroz", "Aveia", "Azeite de oliva", "Café em Pó", "Canjica", "Chocolate", "Ervilha", "Espaguete", "Extrato de tomate", "Farinha de Aveia", "Farinha de mandioca", "Farinha de Milho", "Farinha de rosca", "Farinha de trigo", "Farofa", "Feijão", "Fécula", "Fermento", "Grão-de-bico", "Lentilha", "Macarrão", "Milho verde", "Molho", "Molho de tomate", "Molho inglês", "Nescafé","Nescau", "Óleo", "Palmito", "Penne", "Polvilho", "Vinagre"] }, 
-    { category: "Padaria", icon: "fas fa-bread-slice", items: ["Biscoito", "Croissant", "Filtro de Café", "Pão", "Pão de forma", "Pão de Milho", "Pão de queijo", "Pão de Sanduíche", "Pão Doce", "Pão p/ cachorro-quente", "Pão p/ Hamburguer", "Pão Sovado", "Torta"] }, 
-    { category: "Peixes e Frutos do Mar", icon: "fas fa-fish", items: ["Bacalhau", "Camarão", "Filé de merluza", "Filé de Peixe", "Lagosta", "Lula", "Mexilhão", "Ostra", "Pescada", "Pintado", "Polvo", "Sardinha", "Tainha", "Traíra"] }, 
-    { category: "Produtos de Limpeza", icon: "fas fa-broom", items: ["Álcool Gel", "Álcool Liquido", "Amaciante", "Arpic", "Bacia", "Balde", "Bombril", "Buchinha", "Cera em Pasta", "Cera Liquida", "Cheirinho de Chão", "Cif", "Cloro", "Cloro Ativo", "Desengordurante", "Desinfetante", "Desodorizante", "Detergente", "Esfregão de Aço", "Esponja", "Fósforo", "Inseticida", "Jóia Líquida", "Limpa Vidro", "Luva de Borracha", "Lustra Moveis", "Lustra Piso", "Lustra Vidro", "Pano de Limpeza", "Pato", "Pó de Limpeza", "Rodo", "Sabão em Barra", "Sabão em Pó", "Sabão Liquido", "Soda Cáustica", "Vassoura", "Vassoura de Vaso Sanitário", "Veja"] }, 
-    { category: "Queijos", icon: "fas fa-cheese", items: ["Brie", "Cheddar", "Mussarela","Parmesão", "Provolone", "Roquefort", "Prato"] }, 
-    { category: "Refeições rápidas", icon: "fas fa-pizza-slice", items: ["Empanados", "Massas prontas", "Meu menu"] }, 
-    { category: "Sobremesas", icon: "fas fa-birthday-cake", items: ["Calda para sorvete", "Frutas em calda", "Gelatina cristalizada", "Mousse", "Pudim"] }, 
-    { category: "Temperos", icon: "fas fa-pepper-hot", items: ["Açafrão", "Alho", "Caldo de aves", "Caldo de Carne", "Caldo de legumes", "Canela", "Canela em pau", "Cebola", "Cebolinha", "Coentro", "Colorau", "Cominho", "Cravo-da-Índia", "Curry", "Ketchup", "Louro", "Maionese", "Molho de Galinha", "Molho de Mostarda", "Mostarda", "Noz-moscada", "Oregano", "Paprica Defumada", "Paprica Doce", "Pimenta", "Pimenta Malagueta", "Pimenta Vermelha", "Pimenta-do-Reino", "Pimentão", "Sal", "Salsa", "Sazon", "Shoyu", "Vinagre"] }, 
-    { category: "Outros", icon: "fas fa-box", items: ["Alum. Ralado", "Beterraba p/ Galo", "Comida p/ Cachorro", "Comida p/ Galinha", "Comida p/ Pássaro", "Comida p/ Peixe", "Copos Descartáveis","Corante alimenticio", "Guardanapo de Papel", "Lâmpada", "Papel Alumínio", "Pilha", "Toalha", "Vela"] }
+    { category: "Açougue", icon: "fas fa-drumstick-bite", items: ["Açém", "Alcatra", "Bacon", "Calabresa", "Carne de Frango", "Carne de Porco", "Carne moída", "Carré", "Costela", "Costela Bovina", "Costela de Boi", "Costela Ovina", "Costela Suína", "Coxa", "Coxa de Frango", "Filé de Coxa", "Filé de Peito", "Filé Mignon", "Filé Mignon Suíno", "Guisado", "Lagarto bovino", "Linguiça", "Linguicinha", "Paleta de Cordeiro", "Patinho", "Peito de Frango", "Pernil", "Peru", "Picanha", "salsicha", "Salsichão", "Sobrecoxa"] },
+    { category: "Aperitivos", icon: "fas fa-cookie-bite", items: ["Amendoim", "Batata Palha", "Milho para pipoca", "Tapioca"] },
+    { category: "Bebidas", icon: "fas fa-wine-glass-alt", items: ["Água", "Água Mineral C/ Gás", "Achocolatado", "Cacau em pó", "Cachaça", "Café", "Cerveja", "Cerveja Preta", "Champagne", "Chá", "Chá Gelado", "Coca-Cola", "Espumante", "Fanta", "Guaraná", "Pepsi", "Refrigerante", "Sprite", "Suco", "Vinho Branco", "Vinho Rosé", "Vinho Tinto", "Vodka", "Whisky"] },
+    { category: "Congelados", icon: "fas fa-snowflake", items: ["Almôndega", "Batatas pré-fritas", "Batata Rosti", "Hambúrguer", "Lasanha", "Pizza Pronta", "Sorvete"] },
+    { category: "Doces", icon: "fas fa-candy-cane", items: ["Balas", "Chicletes", "Chocolates", "Doce de Amendoim", "Doce de Leite", "BomBom", "Paçoca", "Pastilhas"] },
+    { category: "Enlatados", icon: "fas fa-archive", items: ["Atum em lata", "Azeitona", "Cogumelo", "Creme de Leite", "Ervilha em Lata", "Leite Condensado", "Milho em Lata", "Salsicha em Lata", "Sardinhas"] },
+    { category: "Frutas", icon: "fas fa-apple-alt", items: ["Abacate", "Banana", "Jambo", "Kiwi", "Laranja", "Limão", "Maçã", "Mamão", "Manga", "Melancia", "Melão", "Morango", "Pera", "Tangerina", "Uva"] },
+    { category: "Higiene", icon: "fas fa-pump-soap", items: ["Absorvente", "Acetona", "Algodão", "Bronzeador", "Condicionador", "Cotonete", "Creme Dental", "Desodorante rollon", "Creme p/ o Rosto", "Desodorante Spray", "Enxaguante Bucal", "Escova Dental", "Fio Dental", "Papel Higienico", "Pasta de dentes", "Prestobarba", "Protetor Solar", "Sabonete", "Shampoo", "Talco p/ Pé"] },
+    { category: "Lanche", icon: "fas fa-hamburger", items: ["Biscoito", "Bolos", "Capuchino", "Cereais", "Doces e compotas", "Doces pastosos", "Geleias", "Massa de pastel", "Mel"] },
+    { category: "Laticínios ou Ovos", icon: "fas fa-cheese", items: ["Danone", "Embutidos", "Iogurte", "Leite integral", "Leite Desnatado", "Leite de Coco", "Leite em pó", "Manteiga", "Margarina", "Ovo", "Queijo", "Queijo ralado", "Requeijao", "Salame", "Yakult"] },
+    { category: "Legumes e Verduras", icon: "fas fa-carrot", items: ["Abóbora", "Agrião", "Aipim", "Alface", "Batata Doce", "Batata Inglesa", "Beterraba", "Brócolis", "Cenoura", "Chuchu", "Couve", "Couve-Flor", "Jiló", "Mostarda", "Pepino", "Repolho", "Tomate", "Vagem"] },
+    { category: "Mercearia", icon: "fas fa-shopping-basket", items: ["Açúcar", "Adoçante", "Amido de milho", "Arroz", "Aveia", "Azeite de oliva", "Café em Pó", "Canjica", "Chocolate", "Ervilha", "Espaguete", "Extrato de tomate", "Farinha de Aveia", "Farinha de mandioca", "Farinha de Milho", "Farinha de rosca", "Farinha de trigo", "Farofa", "Feijão", "Fécula", "Fermento", "Grão-de-bico", "Lentilha", "Macarrão", "Milho verde", "Molho", "Molho de tomate", "Molho inglês", "Nescafé", "Nescau", "Óleo", "Palmito", "Penne", "Polvilho", "Vinagre"] },
+    { category: "Padaria", icon: "fas fa-bread-slice", items: ["Biscoito", "Croissant", "Filtro de Café", "Pão", "Pão de forma", "Pão de Milho", "Pão de queijo", "Pão de Sanduíche", "Pão Doce", "Pão p/ cachorro-quente", "Pão p/ Hamburguer", "Pão Sovado", "Torta"] },
+    { category: "Peixes e Frutos do Mar", icon: "fas fa-fish", items: ["Bacalhau", "Camarão", "Filé de merluza", "Filé de Peixe", "Lagosta", "Lula", "Mexilhão", "Ostra", "Pescada", "Pintado", "Polvo", "Sardinha", "Tainha", "Traíra"] },
+    { category: "Produtos de Limpeza", icon: "fas fa-broom", items: ["Álcool Gel", "Álcool Liquido", "Amaciante", "Arpic", "Bacia", "Balde", "Bombril", "Buchinha", "Cera em Pasta", "Cera Liquida", "Cheirinho de Chão", "Cif", "Cloro", "Cloro Ativo", "Desengordurante", "Desinfetante", "Desodorizante", "Detergente", "Esfregão de Aço", "Esponja", "Fósforo", "Inseticida", "Jóia Líquida", "Limpa Vidro", "Luva de Borracha", "Lustra Moveis", "Lustra Piso", "Lustra Vidro", "Pano de Limpeza", "Pato", "Pó de Limpeza", "Rodo", "Sabão em Barra", "Sabão em Pó", "Sabão Liquido", "Soda Cáustica", "Vassoura", "Vassoura de Vaso Sanitário", "Veja"] },
+    { category: "Queijos", icon: "fas fa-cheese", items: ["Brie", "Cheddar", "Mussarela", "Parmesão", "Provolone", "Roquefort", "Prato"] },
+    { category: "Refeições rápidas", icon: "fas fa-pizza-slice", items: ["Empanados", "Massas prontas", "Meu menu"] },
+    { category: "Sobremesas", icon: "fas fa-birthday-cake", items: ["Calda para sorvete", "Frutas em calda", "Gelatina cristalizada", "Mousse", "Pudim"] },
+    { category: "Temperos", icon: "fas fa-pepper-hot", items: ["Açafrão", "Alho", "Caldo de aves", "Caldo de Carne", "Caldo de legumes", "Canela", "Canela em pau", "Cebola", "Cebolinha", "Coentro", "Colorau", "Cominho", "Cravo-da-Índia", "Curry", "Ketchup", "Louro", "Maionese", "Molho de Galinha", "Molho de Mostarda", "Mostarda", "Noz-moscada", "Oregano", "Paprica Defumada", "Paprica Doce", "Pimenta", "Pimenta Malagueta", "Pimenta Vermelha", "Pimenta-do-Reino", "Pimentão", "Sal", "Salsa", "Sazon", "Shoyu", "Vinagre"] },
+    { category: "Outros", icon: "fas fa-box", items: ["Alum. Ralado", "Beterraba p/ Galo", "Comida p/ Cachorro", "Comida p/ Galinha", "Comida p/ Pássaro", "Comida p/ Peixe", "Copos Descartáveis", "Corante alimenticio", "Guardanapo de Papel", "Lâmpada", "Papel Alumínio", "Pilha", "Toalha", "Vela"] }
 ];
 
 // LÓGICA DE AUTENTICAÇÃO
@@ -39,7 +39,7 @@ auth.onAuthStateChanged(user => {
 
 async function fetchAndCacheImageUrl(productName) {
     const docId = removerAcentos(productName.toLowerCase()).replace(/[^a-z0-9]+/g, '-');
-    
+
     try {
         const doc = await productImagesCollection.doc(docId).get();
         if (doc.exists) {
@@ -48,7 +48,7 @@ async function fetchAndCacheImageUrl(productName) {
 
         // NOVO: Chama o nosso intermediário seguro em vez da API do Google
         const response = await fetch(`/api/search-images?q=${encodeURIComponent(productName)}`);
-        
+
         if (!response.ok) {
             console.error("Erro ao chamar nosso API de imagem.");
             return null;
@@ -56,7 +56,7 @@ async function fetchAndCacheImageUrl(productName) {
 
         const data = await response.json();
         const imageUrl = data.imageUrl;
-        
+
         if (imageUrl) {
             await productImagesCollection.doc(docId).set({ url: imageUrl });
         }
@@ -71,7 +71,7 @@ async function fetchAndCacheImageUrl(productName) {
 // FUNÇÃO PRINCIPAL DO APP
 function initializeApp(user) {
     const listasCollection = db.collection('users').doc(user.uid).collection('minhasListas');
-    
+
     // Todas as referências a elementos do DOM
     const loadingIndicator = document.getElementById('loading-indicator');
     const navButtons = document.querySelectorAll('.nav-button');
@@ -117,7 +117,7 @@ function initializeApp(user) {
         minhasTodasAsListas = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         const activeViewEl = Object.values(views).find(view => view && view.style.display === 'block');
         const activeViewId = activeViewEl ? activeViewEl.id : 'view-minhas-listas';
-        
+
         if (activeViewId === 'view-minhas-listas') renderizarListas();
         else if (activeViewId === 'view-lista-especifica' && currentOpenListId) {
             const listaAberta = minhasTodasAsListas.find(l => l.id === currentOpenListId);
@@ -157,7 +157,7 @@ function initializeApp(user) {
             showToast(`"${produto.nome}" já está na sua lista.`);
             return;
         }
-        
+
         const novosItens = [...lista.itens, { nome: produto.nome, qtd: 1, preco: 0.00, comprado: false }];
         try {
             await listasCollection.doc(currentOpenListId).update({ itens: novosItens, ultimaModificacao: new Date().toISOString() });
@@ -189,7 +189,7 @@ function initializeApp(user) {
             const itemLinha = document.createElement('div');
             itemLinha.className = 'produto-catalogo-item-linha';
             const placeholderId = `img-placeholder-${removerAcentos(produto.nome).toLowerCase().replace(/ /g, '-')}`;
-            
+
             itemLinha.innerHTML = `
                 <div class="produto-catalogo-imagem-placeholder" id="${placeholderId}">
                     <i class="fas fa-spinner fa-spin"></i>
@@ -210,9 +210,9 @@ function initializeApp(user) {
     function renderizarBotoesCategoriaCatalogo() {
         if (!catalogoCategoriasAbasContainer) return;
         catalogoCategoriasAbasContainer.innerHTML = '';
-        
+
         const categorias = ['Todos', ...shoppingListData.map(c => c.category)];
-        
+
         categorias.forEach(nomeCategoria => {
             const btnCat = document.createElement('button');
             btnCat.className = 'aba-categoria';
@@ -223,14 +223,14 @@ function initializeApp(user) {
                 const categoriaInfo = shoppingListData.find(c => c.category === nomeCategoria);
                 btnCat.innerHTML = `<i class="${categoriaInfo.icon || 'fas fa-tag'}"></i> ${nomeCategoria}`;
             }
-            
+
             if (nomeCategoria === categoriaCatalogoAtiva) {
                 btnCat.classList.add('active');
             }
-            
+
             btnCat.addEventListener('click', () => {
                 categoriaCatalogoAtiva = nomeCategoria;
-                if(catalogoSearchInput) catalogoSearchInput.value = '';
+                if (catalogoSearchInput) catalogoSearchInput.value = '';
                 renderizarBotoesCategoriaCatalogo();
                 renderizarProdutosCatalogo();
             });
@@ -253,7 +253,7 @@ function initializeApp(user) {
             b.classList.toggle('active', isActive);
         });
     }
-    
+
     function renderizarListas() {
         if (!listasCardsContainer) return;
         listasCardsContainer.innerHTML = '';
@@ -345,7 +345,7 @@ function initializeApp(user) {
             <div class="detalhe-resumo"><span>Total de Unidades Compradas:</span><strong class="valor-destaque">${totalUnidadesCompradas}</strong></div>
             <div class="detalhe-resumo grand-total-resumo"><span>Valor Total dos Comprados:</span><strong>R$ ${totalValorComprado.toFixed(2)}</strong></div>`;
     }
-    
+
     function openItemModal(mode, listId, itemDataForAdd = null, itemIndexForEdit = null) {
         if (!itemModal) return;
         itemForm.reset();
@@ -448,7 +448,7 @@ function initializeApp(user) {
         } else showView('minhas-listas');
     }
     function closeItemModal() { if (itemModal) itemModal.style.display = 'none'; }
-    
+
     // Event Listeners
     if (fabCriarLista) fabCriarLista.addEventListener('click', criarNovaLista);
     if (itemForm) itemForm.addEventListener('submit', salvarItem);
@@ -468,12 +468,17 @@ function initializeApp(user) {
     if (configApagarDadosBtn) configApagarDadosBtn.addEventListener('click', () => {
         if (confirm("Apagar TODAS as suas listas?")) if (confirm("AÇÃO IRREVERSÍVEL! Confirma?")) {
             listasCollection.get().then(qs => { const b = db.batch(); qs.forEach(d => b.delete(d.ref)); return b.commit(); }).then(() => alert("Listas apagadas!"))
-            .catch(e => console.error("Erro ao apagar dados: ", e));
+                .catch(e => console.error("Erro ao apagar dados: ", e));
         }
     });
     if (configSobreAppBtn) configSobreAppBtn.addEventListener('click', () => alert("Salva Compras v3.0"));
     if (catalogoSearchInput) catalogoSearchInput.addEventListener('input', () => renderizarProdutosCatalogo(catalogoSearchInput.value));
-    
+    if (itemPrecoInput) {
+        itemPrecoInput.addEventListener('focus', function () {
+            this.select();
+        });
+    }
+
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
             const view = button.getAttribute('data-view');
