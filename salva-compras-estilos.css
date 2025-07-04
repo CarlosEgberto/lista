@@ -937,3 +937,89 @@ body {
 .produto-catalogo-item-linha:hover .produto-catalogo-imagem-placeholder i {
     color: var(--cor-primaria-azul-moderno);
 }
+/* ---- NOVOS ESTILOS PARA A TELA "RESUMO DA COMPRA" ---- */
+
+/* Aumenta o espaçamento geral na caixa de resumo */
+#resumo-conteudo {
+    padding: 25px;
+}
+
+/* Deixa o título do resumo mais destacado */
+#resumo-conteudo .nome-lista-resumo {
+    text-align: center;
+    font-size: 1.1em;
+    padding-bottom: 20px; /* Mais espaço abaixo do título */
+    margin-bottom: 20px;
+    border-bottom: 1px dashed var(--cor-borda-sutil);
+}
+#resumo-conteudo .nome-lista-resumo span {
+    display: block;
+    color: var(--cor-icone-inativo);
+    font-weight: 400;
+}
+#resumo-conteudo .nome-lista-resumo strong {
+    font-size: 1.4em;
+    color: var(--cor-primaria-azul-moderno);
+}
+
+/* Aumenta o espaço entre as linhas de detalhes */
+#resumo-conteudo .detalhe-resumo {
+    padding: 15px 5px; /* Mais preenchimento vertical */
+    font-size: 1.1em;
+}
+
+/* Dá destaque para os números (quantidades) */
+#resumo-conteudo .valor-destaque {
+    font-size: 1.2em;
+    color: var(--cor-destaque-azul-brilhante);
+}
+
+/* Deixa o total BEM GRANDE e verde */
+#resumo-conteudo .grand-total-resumo {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 2px solid var(--cor-primaria-azul-moderno);
+    font-size: 1.5em; /* Aumenta o tamanho da fonte do texto */
+    font-weight: bold;
+    color: var(--cor-primaria-azul-moderno);
+}
+
+#resumo-conteudo .grand-total-resumo strong {
+    font-size: 1.7em; /* Deixa o valor em si ainda maior */
+    color: var(--cor-verde-sucesso); /* Cor verde para o valor! */
+}
+
+/* Estilo para a imagem do produto no catálogo */
+.produto-catalogo-imagem-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    border-radius: 6px; /* Bordas arredondadas */
+}
+
+/* ---- ESTILOS PARA A NOTIFICAÇÃO (TOAST) ---- */
+#toast-notification {
+    position: fixed; /* Fica fixo na tela, mesmo com rolagem */
+    bottom: 80px; /* Posição: um pouco acima da barra de navegação */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    
+    background-color: var(--cor-primaria-azul-moderno);
+    color: var(--cor-texto-sobre-fundo-escuro);
+    padding: 12px 25px;
+    border-radius: 25px; /* Bordas bem arredondadas */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 2000; /* Garante que fique acima de tudo */
+
+    /* Animação de entrada e saída */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease, bottom 0.4s ease;
+}
+
+/* Classe que vamos adicionar via JS para mostrar a notificação */
+#toast-notification.show {
+    opacity: 1;
+    visibility: visible;
+    bottom: 90px; /* Efeito de subir um pouquinho ao aparecer */
+}

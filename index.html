@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,6 @@
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'><path fill='%23203A4C' d='M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z'/></svg>">
 </head>
-
 <body>
     <div class="app-container">
         <header class="app-header">
@@ -68,16 +66,6 @@
                         <span>Sobre o Salva Compras</span>
                         <i class="fas fa-chevron-right arrow-config"></i>
                     </li>
-                    <li class="item-configuracao disabled-config">
-                        <i class="fas fa-palette icon-config"></i>
-                        <span>Mudar Tema (em breve)</span>
-                        <i class="fas fa-chevron-right arrow-config"></i>
-                    </li>
-                    <li class="item-configuracao disabled-config">
-                        <i class="fas fa-bell icon-config"></i>
-                        <span>Notificações (em breve)</span>
-                        <i class="fas fa-chevron-right arrow-config"></i>
-                    </li>
                 </ul>
             </div>
 
@@ -97,17 +85,14 @@
                 <form id="item-form">
                     <input type="hidden" id="modal-item-list-id">
                     <input type="hidden" id="modal-item-index">
-
                     <div class="form-group">
                         <label for="item-nome-display">Nome do Produto:</label>
                         <input type="text" id="item-nome-display" readonly>
                     </div>
-
                     <div class="form-group">
                         <label for="item-preco">Preço Unitário (R$):</label>
                         <input type="number" id="item-preco" step="0.01" value="0.00" min="0" required>
                     </div>
-
                     <div class="modal-actions">
                         <button type="button" id="remover-item-modal-btn" class="btn-remover-modal" style="display: none;">Remover</button>
                         <button type="button" id="cancel-item-btn">Cancelar</button>
@@ -118,23 +103,13 @@
         </div>
 
         <nav class="bottom-nav">
-            <button class="nav-button active" data-view="minhas-listas" aria-label="Minhas Listas">
-                <i class="fas fa-list-alt"></i>
-                <span>Listas</span>
-            </button>
-            <button class="nav-button" data-view="adicionar-produto" aria-label="Catálogo de Produtos">
-                <i class="fas fa-book-open"></i>
-                <span>Catálogo</span>
-            </button>
-            <button class="nav-button" data-view="resumo-compra" aria-label="Resumo da Compra">
-                <i class="fas fa-file-invoice-dollar"></i>
-                <span>Resumo</span>
-            </button>
-            <button class="nav-button" data-view="configuracoes" aria-label="Ajustes">
-                <i class="fas fa-cog"></i>
-                <span>Ajustes</span>
-            </button>
+            <button class="nav-button active" data-view="minhas-listas" aria-label="Minhas Listas"><i class="fas fa-list-alt"></i><span>Listas</span></button>
+            <button class="nav-button" data-view="adicionar-produto" aria-label="Catálogo"><i class="fas fa-book-open"></i><span>Catálogo</span></button>
+            <button class="nav-button" data-view="resumo-compra" aria-label="Resumo"><i class="fas fa-file-invoice-dollar"></i><span>Resumo</span></button>
+            <button class="nav-button" data-view="configuracoes" aria-label="Ajustes"><i class="fas fa-cog"></i><span>Ajustes</span></button>
         </nav>
+
+        <div id="toast-notification"></div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -143,5 +118,4 @@
     <script src="firebase.js"></script>
     <script src="salva-compras-app.js" defer></script>
 </body>
-
 </html>
