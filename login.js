@@ -1,4 +1,4 @@
-
+//logica
 // 2. LÓGICA DA PÁGINA DE LOGIN
 document.addEventListener('DOMContentLoaded', function() {
     // --- Referências aos Elementos ---
